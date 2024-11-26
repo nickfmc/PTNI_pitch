@@ -1,0 +1,17 @@
+{
+    "name": "acf/slider-block",
+    "title": "Slider",
+    "description": "Custom Slider",
+    "icon": "button",
+    "viewScript": [ "splide", "slider" ],
+    "keywords": ["slider"],
+    "category": "myblocks",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "slider.php"
+    },
+    "example": {
+        "attributes": {}
+    },
+    "align": "full"
+}

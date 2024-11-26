@@ -1,0 +1,19 @@
+/* ==========================================================================
+   POST NAVIGATION
+   ========================================================================== */
+
+.c-post-nav {
+  margin: 1rem 0;
+}
+
+.c-post-nav ul {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  @include list-reset;
+  li {
+    &::before {
+      display: none;
+    }
+  }
+}

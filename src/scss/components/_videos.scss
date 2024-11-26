@@ -1,0 +1,75 @@
+/* _videos.scss */
+.video-player {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+    // padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    border-radius: 8px;
+
+    video {
+        // position: absolute;
+        top: 0;
+        left: 0; 
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        position: absolute;
+        bottom: 6px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 4px 10px;
+        border-radius: 0 0 8px 8px;
+    }
+    
+    button {
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+        background: none;
+        border: none;
+    }
+
+    .progress-container {
+        flex-grow: 1;
+        margin: 10px 10px;
+        background: #ccc;
+        cursor: pointer;
+        height: 8px;
+        position: relative;
+        border-radius: 10px;
+
+    }
+
+    .progress-bar {
+        background: $color-orange-dark;
+        height: 100%;
+        width: 0;
+        position: absolute;
+        border-radius: 10px;
+        top: 0;
+        left: 0;
+    }
+    
+    
+    .transcript[hidden] {
+        display: none;
+    }
+
+   
+}
+
+.transcript {
+    margin-top: 30px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+}

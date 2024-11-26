@@ -1,0 +1,69 @@
+// ++ SETTINGS +++++++++++++++++++++++++++++++++
+@import "./scss/settings/_variables.scss";
+
+
+// ++ TOOLS +++++++++++++++++++++++++++++++++
+@import "./scss/tools/_z-index.scss";
+@import "./scss/tools/_grid-mixins.scss";
+// deprecating.
+// @import "./scss/tools/_fluid-sizing.scss";
+@import "./scss/tools/_fluid-type.scss";
+@import "./scss/tools/_helper-mixins.scss";
+
+
+// ++ VENDOR +++++++++++++++++++++++++++++++++
+@import "../node_modules/animate.css/animate.css";
+// @import "../node_modules/aos/dist/aos.css";
+
+
+// @import "../node_modules/swiper/swiper-bundle.min.css"; 
+
+
+
+// ++ ELEMENTS (BASE) +++++++++++++++++++++++++++++++++
+@import "./scss/elements/_normalize.scss";
+@import "./scss/elements/_normalize-extras.scss";
+@import "./scss/elements/_html-body.scss"; 
+@import "./scss/elements/_blockquote.scss";
+@import "./scss/elements/_headings.scss";
+@import "./scss/elements/_hr.scss";
+@import "./scss/elements/_form.scss";
+@import "./scss/elements/_links.scss";
+@import "./scss/elements/_paragraph.scss";
+
+
+// ++ OBJECTS +++++++++++++++++++++++++++++++++
+@import "./scss/objects/_embed.scss";
+@import "./scss/objects/_section.scss";
+@import "./scss/objects/_wrapper.scss";
+
+
+// ++ COMPONENTS +++++++++++++++++++++++++++++++++
+@import "./scss/components/_blocks-default.scss";
+@import "./scss/components/_buttons.scss";
+@import "./scss/components/_footer-widgets.scss";
+@import "./scss/components/_footer.scss";
+@import "./scss/components/_header.scss";
+@import "./scss/components/_breadcrumbs.scss";
+@import "./scss/components/_small-blocks.scss";
+@import "./scss/components/_logo-main.scss";
+@import "./scss/components/_nav-main.scss";
+@import "./scss/components/_videos.scss";
+@import "./scss/components/_nav-modal.scss";
+@import "./scss/components/_navmobile.scss";
+@import "./scss/components/_nav-tertiary.scss";
+@import "./scss/components/_post-navi.scss";
+@import "./scss/components/_wp-content.scss";
+@import "./scss/components/_404.scss";
+
+
+
+// ++ UTILITIES +++++++++++++++++++++++++++++++++
+@import "./scss/utilities/_colors.scss";
+@import "./scss/utilities/_height-utils.scss";
+@import "./scss/utilities/_layout-utils.scss";
+@import "./scss/utilities/_misc-utils.scss";
+@import "./scss/utilities/_overrides.scss";
+@import "./scss/utilities/_print.scss";
+@import "./scss/utilities/_spacing-utils.scss";
+@import "./scss/utilities/_width-utils.scss";

@@ -1,0 +1,158 @@
+// .c-img-banner {
+//     height: 500px;
+//     @media(width >= $bp-large) {
+//     height: 695px;
+//     } 
+//     img {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//         object-position: center;
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//     }
+// }
+
+.c-img-banner {
+    height: 450px;
+    overflow: hidden; // Ensure the image doesn't overflow the container
+    background-color: $color-blue-darkest;
+
+    @media (width >= $bp-large) {
+        height: 665px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0; // Initial state: hidden
+        transform: scale(1.1); // Initial state: slightly zoomed out
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out; // Animation properties
+    }
+
+    &.loaded img {
+        opacity: 1; // Final state: visible
+        transform: scale(1); // Final state: normal size
+    }
+}
+
+// circled images
+.c-circle-outlined {
+    position: relative;
+    border: 1px solid $color-blue-med;
+    padding: 10px;
+    border-radius: 50%;
+    img {
+        border-radius: 50%;
+    }
+    &::after {
+        content: '';
+        display: block;
+        border: 1px solid $color-blue-med;
+        width: calc(100% + 20px);
+        height: calc(100% + 20px);
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        border-radius: 50%;
+    }
+}
+
+.c-home-hero {
+position: relative;
+
+}
+
+.c-home-hero-img {
+    z-index: -1;
+    position: absolute;
+    max-width: 100% !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+        position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+        object-fit: cover;
+        object-position: center;
+    }
+
+}
+
+.c-circle-image, .is-style-circleimg {
+    position: relative;
+    border-radius: 50%;
+    border: 1px solid $color-blue-med;
+    padding: 10px;
+
+    img {
+      border-radius: 50%;
+     
+      position: relative;
+      
+    }
+    &::after {
+        content: '';
+        display: block;
+        border: 1px solid $color-blue-med;
+        width: calc(100% + 20px);
+        height: calc(100% + 20px);
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        border-radius: 50%;
+      }
+}
+
+// accordions
+.c-accordiion-main {
+    .gb-button .gb-icon {
+background-color: $color-blue-dark;
+color: #fff;
+width: 30px ;
+height: 30px;
+padding: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 30px;
+border: 1px solid $color-blue-med;
+svg {
+    fill: #fff;
+    rect {
+        fill: #fff !important;
+    }
+}
+    }
+}
+
+// Callouts
+.c-callouts {
+ > .gb-grid-column {
+    > .gb-container {
+        >.gb-container:last-of-type {
+                > :last-child {
+                    margin-bottom: 0 !important;
+                }
+        }
+        }
+    }
+ }
+
+//  Related Content
+.c-releated-content {
+     div {
+        border-color: $color-blue-med;
+    }
+}

@@ -1,0 +1,352 @@
+/* ==========================================================================
+	 BLOCK EDITOR GENERATED STYLES
+	 ========================================================================== */
+
+// A lot of time went into testing this and making it work with 3rd party blocks and get nesting of blocks to work, any changes here should be really tested and considered before modifying.
+
+$paddingHorizontal: 30px; 
+.editor-content {
+ 
+  padding: 0 $paddingHorizontal;
+}
+
+
+.editor-content > *  { 
+  max-width: $wrapper-width-base;
+  margin-left: auto;
+  margin-right: auto;
+  > [class*="wp-block"] {
+    max-width: $wrapper-width-base;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.editor-content > .alignwide, .editor-content > .is-style-alignwide {
+  width: $wrapper-width-wide;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  > [class*="wp-block"] {
+    max-width: $wrapper-width-base;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  > [class*="wp-block"].alignwide {
+    width: $wrapper-width-wide;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.editor-content > .alignfull {
+  transform: translateX(calc(0px - #{$paddingHorizontal})) translate3d(0, 0, 0);
+  transform-style: preserve-3d;
+  width: calc(100% + 2 * #{$paddingHorizontal});
+  max-width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+
+  > [class*="wp-block"] {
+    max-width: $wrapper-width-base;
+    margin-left: auto;
+    margin-right: auto;
+    &.alignwide {
+      width: $wrapper-width-wide;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  // used when alignfull content has bg image that is position fixed.
+  &.parafull {
+    transform: none;
+    left: -30px;
+  }
+}
+
+.editor-content > .gb-container.alignfull {
+  // LEAVING THIS OFF FOR NOW, WE HAVE INTERNAL 30px
+  // padding-left: 30px;
+  // padding-right: 30px;
+  position: relative;
+
+  > .gb-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    &.u-nopad {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+ }
+
+ .editor-content > .gb-container.alignfull .gb-container.u-no-xpad {
+  padding-left: 0;
+  padding-right: 0;
+ }
+
+
+.aligncenter {
+  text-align: center;
+  justify-content: center;
+}
+
+.editor-content .alignleft {
+  float: left;
+  margin-right: 2em;
+  max-width: 360px;
+}
+
+.editor-content .alignright {
+  float: right;
+  margin-left: 2em;
+  max-width: 360px;
+}       
+
+.is-style-secondaryfont {
+  font-family: $font-secondary;
+  letter-spacing: 1px;
+}
+
+// ++ table block ++++++++++++++++++++++++++++
+.wp-block-table {
+  margin-top: 30px;
+  padding: 2px;
+  & th {
+    text-align: left;
+  }
+  & th, & td {
+    border: none;
+    padding: 20px;
+    line-height: 1.2;
+  }
+  & tr:first-of-type {
+    text-align: left;
+    border-top: 1px solid #333;
+  }
+  & tr {
+    border-top: 1px solid #333;
+    & td {
+      border: 1px solid #333;
+    }
+  }
+  thead {
+    border-bottom: 1px solid #333 !important;
+    tr {
+      th {
+        font-size: 18px;
+        border: 1px solid #333; 
+      }
+    }
+  } 
+  &.is-style-stripes {
+    & tr {
+      border-top: none;
+    }
+    thead {
+      tr {
+        border: none;
+        th {
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+
+
+// ++ ul list block (with custom class added) +++++++++++++++++++++++++++++++++
+.editor-content ul {
+  list-style-type: none;
+  margin: 1rem 0 1rem 5px;
+  padding: 0;
+  overflow: hidden;
+justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  &.mt-0 {
+    margin-top: 0 !important;
+  }
+}
+
+.editor-content ul.is-style-u-centered-list {
+li {
+  display: inline-flex;
+  align-self: center;
+}
+}
+
+.editor-content ul li {
+  margin: 0;
+  padding: 0 0 10px 16px;
+  position: relative;
+  font-size: clamped(16px, 18px);
+
+  // display: inline-flex;
+  // align-self: center;
+}
+
+.editor-content ul.has-large-font-size li , .editor-content ul li.has-large-font-size {
+  font-size: clamped(21px, 24px) !important; 
+  &::before {
+    top: 18px;
+  }
+}
+.editor-content ul li::before {
+  display: block; 
+  background-color: $color-orange-dark;
+  content: "";
+	position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  top: 12px;
+  left: 0;
+}
+
+.editor-content ul li ul li {
+  padding-left: 20px;
+}
+
+
+.editor-content ul li ul li::before {
+height: 1px;
+width: 8px;
+top: 15px;
+
+}
+
+.editor-content .wp-block-list + .is-style-u-eyebrow-heading {
+  margin-top: 30px;
+}
+
+.editor-content .o-blue-wrapper  ul li::before {
+  background-color: $color-orange;
+}
+
+.editor-content  .stk-block-icon-list  ul {
+ overflow: visible; 
+
+  li {
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.editor-content .c-cricle-ctas ul{
+margin-left: 0;
+}
+
+
+// ++ ol list block (with custom class added) +++++++++++++++++++++++++++++++++
+.editor-content ol {
+  counter-reset: item;
+  margin: 1rem 0 1rem 5px;
+  padding: 0;
+  overflow: hidden;
+}
+.editor-content ol > li {
+  padding: 0 0 0.5rem 30px;  
+  position: relative;
+  text-indent: 0; 
+  font-size: clamped(16px, 17px);
+  list-style: none; 
+}
+
+.editor-content ol {
+  counter-reset: item; /* Initialize the counter */
+}
+
+.editor-content ol > li {
+  position: relative; /* Ensure the position is relative for absolute positioning of ::before */
+}
+
+
+.editor-content ol.has-large-font-size li , .editor-content ol li.has-large-font-size {
+
+}
+
+.editor-content ol > li::before {
+  content: counter(item) "."; /* Use decimal-leading-zero to add leading zero */
+  counter-increment: item; /* Increment the counter */
+  color: $color-orange;
+  font-weight: 400;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 11px 0 0;
+}
+
+
+
+//buttons
+.wp-block-buttons .wp-block-button:last-of-type {
+  margin-right: 0;
+}
+
+// WP Columns
+// lets match columns to our break points.
+body .wp-block-column {
+  @media(width <=$bp-medium) {
+    flex-basis: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+// wp-5.7 fix
+body .wp-block-column:not(:only-child) {
+  @media(width <=$bp-medium) {
+    flex-basis: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+ // prevent wide columns not having a gutter
+ .editor-content .wp-block-column:not(:first-child) {
+  @media(width >= $bp-medium) {
+    margin-left: 2em;
+  } 
+}
+
+// we need a no gutter style
+.is-style-no-gutter {
+  .wp-block-column {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+body .u-break-early {
+	@media(width <=$bp-large) {
+	flex-direction: column;
+   .wp-block-column {
+	  flex-basis: 100% !important;
+	  max-width: 100%;
+	  margin: 0 0 30px 0 !important;
+	}
+   }
+  }
+
+
+  .has-large-font-size {
+    line-height: 1.25;
+    font-size: clamped(21px, 24px) !important; 
+    line-height: 1.74;
+  }
+
+  .has-small-font-size {
+  line-height: 1.8;
+  font-size: 16px !important;
+  }
+
+  .wp-block-image {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+

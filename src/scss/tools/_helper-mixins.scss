@@ -1,0 +1,52 @@
+/* ==========================================================================
+   MIXINS THAT ARE HELPERS (like utility classes, but for SCSS side instead)
+   ========================================================================== */
+
+@mixin background-image {
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+@mixin list-reset() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin orphan-fix() {
+  overflow: hidden;
+  width: auto;
+}
+
+@mixin primary-font() {
+  font-family: $font-primary;
+  font-weight: 400;
+}
+
+@mixin secondary-font() {
+  font-family: $font-secondary;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+@mixin vertical-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin vertical-center-transform() {
+  // apply to child element + parent must be relative positioned
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

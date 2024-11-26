@@ -1,0 +1,25 @@
+/* ==========================================================================
+   A TAG (links) STYLES
+   ========================================================================== */
+
+a {
+  color: currentColor;
+  text-decoration: none;
+  cursor: pointer;
+  transition: $transition-ease;
+}
+.editor-content a:hover { 
+  filter: brightness(1.1); 
+}
+a, a:active, a:hover, a:visited { 
+  outline: medium none; 
+}
+a[href^="mailto:"] {
+  overflow-wrap: break-word;
+}
+.editor-content a:not(.gb-button) {
+  text-decoration: underline;
+  &:hover {
+    text-decoration-color: $color-orange-dark;
+  }
+}

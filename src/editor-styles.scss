@@ -1,0 +1,155 @@
+/* ==========================================================================
+	 STYLES FOR BACKEND BLOCK EDITOR
+	 ========================================================================== */
+
+// ++ SETTINGS +++++++++++++++++++++++++++++++++
+@import "./scss/settings/_variables.scss";
+@import "./scss/objects/_wrapper.scss";
+
+// ++ TOOLS +++++++++++++++++++++++++++++++++
+@import "./scss/tools/_z-index.scss";
+@import "./scss/tools/_grid-mixins.scss";
+@import "./scss/tools/_fluid-type.scss";
+@import "./scss/tools/_fluid-sizing.scss"; 
+@import "./scss/tools/_helper-mixins.scss";
+
+
+// ++ ELEMENTS (BASE) +++++++++++++++++++++++++++++++++
+@import "./scss/elements/_html-body.scss";
+@import "./scss/elements/_blockquote.scss";
+@import "./scss/elements/_headings.scss";
+@import "./scss/elements/_hr.scss";
+@import "./scss/elements/_form.scss";
+@import "./scss/elements/_links.scss";
+@import "./scss/elements/_paragraph.scss";
+
+
+// ++ COMPONENTS TO IMPORT +++++++++++++++++++++++++++++++++
+@import "./scss/components/_buttons.scss";
+
+
+// ++ UTILITIES +++++++++++++++++++++++++++++++++
+@import "./scss/utilities/_colors.scss";
+@import "./scss/utilities/_layout-utils.scss";
+@import "./scss/utilities/_spacing-utils.scss";
+@import "./scss/utilities/_height-utils.scss";
+@import "./scss/utilities/_width-utils.scss";
+@import "./scss/utilities/_misc-utils.scss";
+
+
+.is-style-secondaryfont {
+	font-family: $font-secondary;
+	letter-spacing: 1px;
+  }
+
+// /* Width of "regular" blocks */
+
+
+// DEPRECATED
+// .wp-block, .ugb-inner-block--center {
+// 	max-width: $wrapper-width-base !important;
+// 	margin-left: auto !important;
+// 	margin-right: auto !important;
+// }
+// /* Width of "wide" blocks */
+// .wp-block[data-align*="wide"], .is-style-alignwide, .wp-block-separator.is-style-wide, .ugb-inner-block--wide,
+// div:not([class]) > .block-editor-block-list__layout > .wp-block[data-align*="wide"]:not([data-align^="full"])
+// {
+//    max-width: $wrapper-width-wide !important;
+//    margin-left: auto !important;
+//    margin-right: auto !important;
+// }
+// DEPRECATED
+
+
+
+
+
+
+.wp-block[data-align="full"] .wp-block-group .wp-block {
+	max-width: 90% !important;
+ }
+ 
+ .wp-block[data-align="wide"] .wp-block-group .wp-block {
+	max-width: 100% !important;
+ }
+ 
+ .wp-block.wp-block-generateblocks-container.alignfull, .wp-block.gb-root-block-generateblocks-container.alignfull{
+	width: 100% !important;
+	min-width: 100% !important;
+ }
+
+ .wp-block.wp-block-generateblocks-container.alignfull, .wp-block.gb-root-block-generateblocks-container.alignfull{
+	width: 100% !important;
+	min-width: 100% !important;
+ }
+
+
+ 
+
+
+// WP Columns
+// lets remove the middle break point.
+body .wp-block-column {
+	@media(width <=782px) {
+	  flex-basis: 0 !important;
+	  flex-grow: 1 !important;
+  
+	  &:not(:first-child) {
+		margin-left: 32px;
+	  }
+	}
+  }
+  
+  // lets match columns to our break points.
+   body .wp-block-column {
+	 @media(width <=$bp-medium) {
+	   flex-basis: 100% !important; 
+	   margin: 0 0 30px 0 !important;
+	 }
+	  
+   }
+  
+   body .u-break-early {
+	@media(width <=$bp-large) {
+	flex-direction: column;
+   .wp-block-column {
+	  flex-basis: 100% !important;
+	  max-width: 100%;
+	  margin: 0 0 30px 0 !important;
+	}
+   }
+  }
+  
+   .is-style-no-gutter {
+	 .wp-block-column {
+	   margin-left: 0;
+	   margin-right: 0;
+	 }
+   }
+  
+   .is-style-narrow-columns {
+	.wp-block-column {
+	  margin-left: 20px; 
+	}
+   }
+  
+// // /* Width of "regular" blocks -- WHY DO I NEED THIS MESS TOOLSET!?!?! */
+.wp-block, 
+ .wp-block[data-type^="toolset"]:not([data-align^="full"]), 
+ div:not([class]) > .block-editor-block-list__layout > .wp-block:not([data-align^="full"]), 
+ .tb-container > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:not([data-align^="full"]) {
+	max-width: $wrapper-width-base !important;
+	z-index: 10;
+}
+
+// and full width blocks
+.wp-block[data-align="full"], .is-style-alignfull, .alignfull  {
+	max-width: none !important;
+	width: 100% !important;
+	max-width: 100% !important;
+	> [class*="wp-block"] {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

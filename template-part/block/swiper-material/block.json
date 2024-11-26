@@ -1,0 +1,17 @@
+{
+    "name": "acf/material-slider-block",
+    "title": "Material Slider",
+    "description": "Custom Slider",
+    "icon": "dashicons-format-gallery",
+    "script": [ "swiper", "effects", "material-slider" ],
+    "keywords": ["slider"],
+    "category": "myblocks",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "material-slider.php"
+    },
+    "example": {
+        "attributes": {}
+    },
+    "align": "full"
+}

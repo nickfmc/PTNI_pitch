@@ -1,0 +1,131 @@
+{
+    "version":2,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"spacing": {
+			"blockGap": false
+		},
+        "color": {
+			"custom": false,
+			"palette": [
+				{
+                    "name": "Black",
+					"slug": "mawblack",
+					"color": "#000000"
+				},
+				{
+					"slug": "mawwhite",
+					"color": "#FFFFFF",
+					"name": "White"
+				},
+                {
+					"slug": "dark-grey",
+					"color": "#455560",
+					"name": "Dark grey #455560"
+				},
+				{
+					"slug": "medium-grey",
+					"color": "#717073",
+					"name": "Medium grey #717073"
+				},
+				{
+					"slug": "light-grey",
+					"color": "#BABCBE",
+					"name": "Light grey #BABCBE"
+				},
+				{
+					"slug": "light-blue",
+					"color": "#739DD2",
+					"name": "Light blue #739DD2"
+				},
+				{
+					"slug": "lightest-blue",
+					"color": "#F3F4F8",
+					"name": "Lightest blue #F3F4F8"
+				},
+				{
+					"slug": "med-blue",
+					"color": "#026CB6",
+					"name": "Medium blue #026CB6"
+				},
+				{
+					"slug": "dark-blue",
+					"color": "#1C2674",
+					"name": "Darkest blue #1C2674"
+				},
+				{
+					"slug": "darkish-blue",
+					"color": "#28317B",
+					"name": "Dark blue #28317B"
+				},
+				{
+					"slug": "dark-green",
+					"color": "#006B6E",
+					"name": "Dark green #006B6E"
+				},
+				{
+					"slug": "light-green",
+					"color": "#A0CF67",
+					"name": "Light green #A0CF67"
+				},
+				{
+					"slug": "dark-orange",
+					"color": "#F26531",
+					"name": "Dark Orange #F26531"
+				},
+				{
+					"slug": "light-orange",
+					"color": "#F68A33",
+					"name": "TNPI Orange #F68A33"
+				},
+				{
+					"slug": "yellow",
+					"color": "#FDB913",
+					"name": "TNPI Yellow #FDB913"
+				},				
+				{
+					"slug": "transparent",
+					"color": "transparent",
+					"name": "Transparent"
+				}
+			],
+			"gradients": [
+				{
+					"slug": "primary-white",
+					"gradient": "linear-gradient(#0073aa 49.9%,#fff 50%)",
+					"name": "Primary color to white"
+				},
+				{
+					"slug": "white-primary",
+					"gradient": "linear-gradient(#fff 49.9%,#0073aa 50%)",
+					"name": "Horizontal white to Primary color"
+				}
+			]
+		
+    },
+    "layout": {
+        "contentSize": "1440px"
+	},
+	"typography": {
+		"fontSizes": [
+			{
+				"slug": "small",
+				"size": "14px",
+				"name": "Small"
+			},
+			{
+				"slug": "normal",
+				"size": "1rem",
+				"name": "Normal"
+			},
+			{
+				"slug": "large",
+				"size": "1.5rem",
+				"name": "large"
+			}
+		]
+	}
+	}  
+}

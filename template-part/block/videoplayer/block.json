@@ -1,0 +1,16 @@
+{
+    "name": "acf/videoplayer",
+    "title": "Accessible Video Player",
+    "description": "Custom Video Player with Accessibility Features",
+    "icon": "format-video",
+    "keywords": ["video", "player", "accessibility"],
+    "category": "my-blocks",
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "video.php"
+    }, 
+    "example": {
+        "attributes": {}
+    },
+    "align": "full"
+}

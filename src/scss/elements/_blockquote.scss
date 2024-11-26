@@ -1,0 +1,51 @@
+/* ==========================================================================
+   BLOCKQUOTE
+   ========================================================================== */
+
+   blockquote {
+    position: relative;
+    padding: 1em 1.5em;
+    margin: 30px 0;
+    font-size: clamped(18px, 24px);
+    color: $heading-color;
+    
+  
+  
+    &::before {
+      content: "\201C";
+      position: absolute;
+      top: 0;
+      left: 10px;
+      z-index: -1;
+      color: $color-gray-light;
+      font-size: 190px;
+      line-height: 1;
+    }
+  
+    & p {
+      margin: 0;
+    }
+  
+    & cite {
+      display: block;
+      margin-top: 1em;
+      font-size: 18px;
+      text-align: left;
+      font-style: italic;
+      &::before {
+        content: "\2014 \2009";
+      }
+    }
+  }
+
+  
+
+/* ADD BIG QUOTE AT THE START OF QUOTE
+blockquote::before {
+  color: #ccc;
+  content: "\201C";
+  font-size: 4rem;
+  line-height: 0.1rem;
+  margin-right: 0.25rem;
+  vertical-align: -0.4rem;
+}*/

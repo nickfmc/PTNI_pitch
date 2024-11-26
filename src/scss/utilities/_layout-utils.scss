@@ -1,0 +1,67 @@
+/* ==========================================================================
+   LAYOUT UTILITIES
+   ========================================================================== */
+
+   .u-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .u-wrapper-padded-sides {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    @media (width >= calc(#{$bp-xlarge} + 3rem)) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
+  
+  // ++ align two items on far left and right edges +++++++++++++++++++++++++++++++++
+  .u-align-side-edges {
+    // apply to parent element
+    text-align: center;
+    margin: 0 auto;
+    @media (width >= $bp-medium) {
+      margin: 0;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  
+  
+  // ++ centering stuff +++++++++++++++++++++++++++++++++
+  .u-vertical-center {
+    // apply to parent element
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .u-vertical-center-transform {
+    // apply to child element + parent must be relative positioned
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  
+  // ++ overflow +++++++++++++++++++++++++++++++++
+  .u-overflow {
+    overflow: hidden;
+  }
+  .u-overflow-x {
+    overflow-x: hidden;
+  }
+  
+  
+  // ++ z-index ++++++++++++++++++++++++++++++++++
+  // create helper z-index classes using same names from z-index function
+  @each $zname, $z-layer in $z-layers {
+    .u-z-#{$zname} {
+      z-index: $z-layer;
+    }
+  }

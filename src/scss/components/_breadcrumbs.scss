@@ -1,0 +1,54 @@
+#breadcrumbs {
+    ol {
+        display: flex;
+        gap: 5px;
+        margin: 0;
+        li {
+            padding: 0;
+            font-family: $font-secondary;
+            letter-spacing: 1px;
+            font-weight: 400;
+            color: $color-blue-light;
+            &::before {
+                content: "";
+            }
+            a {
+                font-weight: 600;
+                color: $color-blue-light;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .breadcrumb-seperator {
+        letter-spacing: -2px;
+        color: $color-yellow;
+        span {
+        color: $color-orange;
+
+        }
+    }
+}
+
+.c-breadcrumbs-Dark #breadcrumbs {
+    ol {
+        li {
+            color: $color-blue-darkest;
+            a {
+                color: $color-blue-darkest;
+            }
+        }
+    }
+    .breadcrumb-seperator {
+        letter-spacing: -2px;
+        color: $color-yellow;
+        span {
+        color: $color-orange;
+
+        }
+    }
+}
+
+.c-breadcrumbs-Light h1 {
+color: #fff;
+}

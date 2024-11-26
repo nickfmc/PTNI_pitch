@@ -1,0 +1,47 @@
+/* ==========================================================================
+   SPACING UTILITIES
+   ========================================================================== */
+
+// ++ rem (base 4 = 1rem scaled) padding and margin helpers +++++++++++++++++++++++++++++++++
+$spaceamounts: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 80); // Adjust this to include as many / few variants you need
+
+
+  $sides: (top, bottom, left, right); // Leave this variable alone
+  @each $space in $spaceamounts {
+    @each $side in $sides {
+      .m#{str-slice($side, 0, 1)}-#{$space} {
+        margin-#{$side}: #{($space * 0.25)}rem;
+      }
+      .p#{str-slice($side, 0, 1)}-#{$space} {
+        padding-#{$side}: #{($space * 0.25)}rem;
+      }
+    }
+  }
+
+  @media (width > $bp-medium) {
+    $sides: (top, bottom, left, right); // Leave this variable alone
+    @each $space in $spaceamounts {
+      @each $side in $sides {
+        .mm#{str-slice($side, 0, 1)}-#{$space} {
+          margin-#{$side}: #{($space * 0.25)}rem;
+        }
+        .mp#{str-slice($side, 0, 1)}-#{$space} {
+          padding-#{$side}: #{($space * 0.25)}rem;
+        }
+      }
+    }
+    }
+
+    @media (width > $bp-large) {
+      $sides: (top, bottom, left, right); // Leave this variable alone
+      @each $space in $spaceamounts {
+        @each $side in $sides {
+          .lm#{str-slice($side, 0, 1)}-#{$space} {
+            margin-#{$side}: #{($space * 0.25)}rem;
+          }
+          .lp#{str-slice($side, 0, 1)}-#{$space} {
+            padding-#{$side}: #{($space * 0.25)}rem;
+          }
+        }
+      }
+      }

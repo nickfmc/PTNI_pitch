@@ -1,0 +1,136 @@
+/* ==========================================================================
+   FORM STYLES
+   ========================================================================== */
+
+// ++ placeholder styles +++++++++++++++++++++++++++++++++
+input::placeholder, textarea::placeholder { 
+  color: $color-black;
+  opacity: 0.8; 
+}
+
+
+.c-search-form > div {
+  display: flex;
+max-width: var(--width-sm, 480px);
+align-items: center;
+gap: var(--spacing-xl, 16px);
+align-self: stretch;
+}
+
+form {
+
+
+input {
+
+display: flex;
+padding: 10px 14px;
+align-items: center;
+gap: var(--spacing-md, 8px);
+flex: 1 0 0;
+align-self: stretch;
+border-radius: var(--radius-md, 8px);
+border: 1px solid var(--Colors-Border-border-primary, #D0D5DD);
+background: var(--Colors-Background-bg-primary, #FFF);
+/* Shadows/shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+overflow: hidden;
+color: var(--Colors-Text-text-placeholder, #667085);
+text-overflow: ellipsis;
+&::placeholder {
+  overflow: hidden;
+color:  #667085;
+text-overflow: ellipsis;
+}
+}
+}
+
+
+
+
+form, .gform-body {
+
+  label {
+    font-weight: 400 !important;
+    margin-bottom: 2px !important;
+  }
+  input, select, textarea {
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius:  0 !important;
+  border: 1px solid  #C1C7D1 !important;
+  background: var(--Colors-Background-bg-primary, #FFF);
+  /* Shadows/shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  overflow: hidden;
+  color: var(--Colors-Text-text-placeholder, #667085);
+  text-overflow: ellipsis;
+  padding: 12px 12px !important;
+  &::placeholder {
+    overflow: hidden;
+  color:  #667085;
+  text-overflow: ellipsis;
+  }
+  }
+  }
+
+  .is-dark-page form, .is-dark-page .gform-body, .o-blue-wrapper form, .o-blue-wrapper .gform-body {
+    input, select, textarea {
+      background-color: $color-blue-dark;
+      border-color: $color-blue-med !important;
+    }
+    .gfield_required .gfield_required_text {
+      color: $color-orange-dark;
+    }
+  }
+  
+  .gform-theme--foundation .gform_fields {
+    grid-row-gap: 20px !important;
+  }
+  
+  
+
+  .gform_wrapper.gravity-theme .gform_fields {
+    grid-column-gap: 60px !important;
+  }
+  
+
+
+
+
+   body .gform_wrapper.gravity-theme .gform_footer {
+  display: inline-flex !important;
+  margin-top: 60px;
+  padding-top: 0;
+  
+    input.gform_button.button {
+      cursor: pointer;
+      display: inline-flex;
+    background-color: #fff !important;
+    padding: 16px 30px !important;
+    justify-content: center;
+    align-items: center;
+    color: #000 !important;
+    text-align: center;
+    font-family: $font-secondary;
+    font-size: 18px;
+    font-style: normal;
+    line-height: 24px; /* 133.333% */
+    letter-spacing: 0.18px;
+    border-radius: 5px;
+    border: 1px solid !important;
+    text-transform: uppercase;
+    font-weight: 400;
+
+    }
+  }
+  
+
+  body.is-dark-page .gform_wrapper.gravity-theme .gform_footer, body .o-blue-wrapper .gform_wrapper.gravity-theme .gform_footer {
+    input.gform_button.button {
+      border-color: $color-blue-med !important;
+      background-color: $color-blue-dark !important;
+      color: #fff !important;
+      
+    }
+  }

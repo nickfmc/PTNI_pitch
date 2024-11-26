@@ -1,0 +1,16 @@
+{
+    "name": "acf/breadcrumbs-block",
+    "title": "Title and breadcrumbs",
+    "description": "Page Title with Breadcrumbs",
+    "icon": "editor-justify",
+    "keywords": ["breadcrumbs", "title"],
+    "category": "my-blocks",
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "breadcrumbs.php"
+    },
+    "example": {
+        "attributes": {}
+    },
+    "align": "full"
+}

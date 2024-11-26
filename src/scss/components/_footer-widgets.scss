@@ -1,0 +1,14 @@
+/* ==========================================================================
+   FOOTER WIDGETS
+   ========================================================================== */
+
+@media (width >= $bp-medium) {
+  @include flex-item-columns('c-footer-widgets', 'widget', 280px, 45px, true, 4);
+}
+
+.c-footer-widgets {
+  padding: 0 0 2rem 0;
+}
+.c-footer-widgets .widget {
+  // anything??
+}

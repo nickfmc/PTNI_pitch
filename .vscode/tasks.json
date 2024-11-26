@@ -1,0 +1,41 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Webpack Dev + Watch",
+      "type": "shell",
+      "command": "node_modules/.bin/webpack --watch --mode development",
+      "isBackground": true,
+      "presentation": {
+        "panel": "shared",
+        "reveal": "always",
+        "revealProblems": "onProblem",
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Webpack Production Build",
+      "type": "shell",
+      "command": "node_modules/.bin/webpack --mode production"
+    },
+    {
+      "label": "Editor Styles Compile",
+      "type": "shell",
+      "command": "node_modules/.bin/sass ./src/editor-styles.scss ./dist/editor-styles.css"
+    },
+    {
+      "label": "Editor Styles Compile w/ PostCSS Processing",
+      "type": "shell",
+      "command": "postcss ./dist/editor-styles.css --u postcss-preset-env -o ./dist/editor-styles.css",
+      "dependsOn": [
+        "Editor Styles Compile"
+      ],
+    },  
+  ]
+}

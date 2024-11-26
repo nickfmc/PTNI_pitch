@@ -1,0 +1,377 @@
+/* ==========================================================================
+   MAIN NAVIGATION AND MENU STYLES
+   ========================================================================== */
+
+// ++ hide main-navigation wrapper (responsive first) +++++++++++++++++++++++++++++++++
+.c-main-navigation {
+  display: none;
+}
+
+#search-popup {
+  // display: none; /* Initially hidden */
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 110px;
+  background: $color-blue-dark; 
+  // padding: 7px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid $color-blue-med;
+  border-left: 1px solid $color-blue-med;
+  transition: all 0.5s ease;
+  max-width: 0;
+  overflow: hidden;
+  height: 100%;
+
+  
+ .c-search-form {
+  > div {
+    height: 100%;
+    max-width: 100% !important;
+    width: 900px;
+    align-items: center !important;
+  padding: 7px 50px 7px 10px;
+  input {
+    background-color: $color-blue-dark; 
+    border: none;
+    color: #fff;
+    &::placeholder {
+      color: $color-blue-light;
+    }
+  }
+
+  }
+ }
+ .c-search-close-button {
+  position: absolute;
+  width: 32px;
+  color: #fff;
+  top: 8px;
+  right: 6px;
+  cursor: pointer;
+  font-size: 33px;
+ }
+ .search-submit {
+  color: #fff;
+  transition: $transition-ease;
+  border: 1px solid $color-blue-med;
+  background-color: $color-blue-dark;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 4px 18px;
+  text-transform: uppercase;
+  font-family: $font-secondary;
+  letter-spacing: 1px;
+  &:hover {
+    background-color: #fff;
+    color: $color-blue-dark;
+  }
+  
+ }
+ a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 1px solid $focus-color;
+  outline-offset: 0px;
+  
+}
+}
+ 
+#search-popup[aria-hidden="false"] {
+  display: flex; /* Show when aria-hidden is false */
+  max-width: 100%;
+  opacity: 1;
+}
+
+#search-button{
+  width: 40px;
+  position: relative;
+svg {
+  width: 20px;  
+}
+&::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: $color-blue-med;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  transition: width 0.3s ease;
+  opacity: 0;
+}
+&:hover {
+  &::after {
+    opacity: 1;
+  }
+}
+}
+
+
+.c-lang-select {
+padding: 10px 30px 10px 15px;
+display: flex;
+align-items: center;
+  button {
+    font-family: $font-secondary;
+    letter-spacing: 1px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-weight: 600;
+    border: 1px solid $color-blue-med;
+    background-color: $color-blue-dark;
+    font-size: 17px;
+  }
+  button.c-lang-select--current {
+    border: none;
+      background-color: transparent;
+  }
+}
+
+
+// ++ show main navigation wrapper when the time is right ++++++++++++++++++++++++++++++++++++
+@media (width >= $bp-large) {
+  .c-main-navigation {
+    /* DISPLAY FULL SIZE MENU */
+    display: flex;
+    padding-left: calc(150px + 1rem);
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+
+
+// ++ menu styles (top level) +++++++++++++++++++++++++++++++++
+@media (width >= $bp-large) {
+  .c-main-menu {
+    display: inline-flex;
+    align-items: flex-start;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .c-main-menu > li {
+    margin: 0;
+    line-height: 1;
+    position: relative;
+    white-space: nowrap;
+  }
+  .c-main-menu > li > a,  .c-main-menu > li > button {
+    color: #fff;
+    font-family: $font-secondary;
+    letter-spacing: 1px;
+    font-size: 17px;
+    word-spacing: .1em;
+    font-weight: 600;
+    display: block;
+    margin: 0;
+    padding: 20px 15px;
+    text-transform: uppercase;
+    position: relative;
+    cursor: unset;
+    &:first-of-type > a {
+      padding-left: 0;
+    }
+    &:last-of-type > a {
+      padding-right: 0;
+    }
+    span {
+      position: relative;
+    }
+    span::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-blue-med;
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      transition: width 0.3s ease;
+      opacity: 0;
+    }
+    &:hover {
+      span::after {
+        opacity: 1;
+      }
+    }
+    
+  }
+  .c-main-menu > li > a:hover {
+    color: #fff;
+    &::after {
+      background-color: $color-primary;
+      transition: $transition-ease;
+    }
+  }
+  .c-main-menu > li:hover a{
+   
+    &::after {
+      background-color: $color-primary;
+      transition: $transition-ease;
+    }
+  }
+  .c-main-menu > .current-menu-item > a,
+  .c-main-menu > .current-page-ancestor > a,
+  .c-main-menu > .current_page_item > a,
+  .c-main-menu > .current_page_parent > a,
+  .c-main-menu > .current_page_ancestor > a {
+    color: #222222
+  }
+}
+// END menu top level
+
+
+
+// ++ menu style (drop down!) +++++++++++++++++++++++++++++++++
+@media (width >= $bp-large) {
+  .c-main-menu li:hover ul, 
+  .c-main-menu li.focus ul {
+    opacity: 1;
+    visibility: visible;
+
+  }
+  .c-main-menu ul {
+    background-color: transparent;
+    position: absolute;
+    left: 15px;
+    top: 100%;
+    min-width: 180px;
+    margin: 0;
+    padding: 20px 0 0 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 200ms linear;
+    z-index: 100;
+    
+  }
+
+  .c-main-menu {
+    >li.u-two-column > ul {
+      column-count: 2;
+      li  {
+        width: 290px;
+        a {
+          white-space: normal;
+        }
+      }
+    }
+  }
+  .c-main-menu ul li {
+    position: relative;
+    // max-height: 0;
+    transition: max-height 300ms linear;
+    overflow: hidden;
+  }
+
+  .c-main-menu ul > li {
+ margin-bottom: 15px;
+    ul li {
+      margin-bottom: 0;
+    }
+  }
+  // .c-main-menu li:hover ul li,
+  // .c-main-menu li.focus ul li {
+  //   max-height: 140px;
+  // }
+ 
+  .c-main-menu ul li a {
+    color: #fff;
+    font-size: 0.938rem;
+    padding: 8px 11px 8px 0;
+    width: 100%;
+    display: block;
+    transition: $transition-ease;
+    text-transform: uppercase;
+    font-family: $font-secondary;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 17px; 
+    border: 1px solid transparent; 
+
+    &:focus, &:active {
+      border: 1px solid #F26531 !important; 
+  outline-offset: 0px;  
+    }
+  
+  }
+
+  // Increase specificity for debugging
+.c-main-menu ul li a:focus, 
+.c-main-menu ul li a:active {
+    outline: 1px solid #F26531 !important; 
+    outline-offset: 0px;  
+}
+
+  .c-main-menu ul ul {
+    visibility: visible;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    padding-top: 0;
+    
+    li {
+      a {
+        font-family: $font-alt;
+        padding: 6px 15px 6px 0;
+        font-weight: 400;
+        text-transform: none;
+        font-size: 16px;
+        line-height: 1.4;
+      }
+      
+    }
+  }
+  .menu-item-has-children .sub-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-item-has-children:hover .sub-menu,
+.menu-item-has-children > button[aria-expanded="true"] + .sub-menu, .menu-item-has-children > button[aria-expanded="true"] + .sub-menu .sub-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+  .c-main-menu ul li a:hover,
+  .c-main-menu ul .current-menu-item > a,
+  .c-main-menu ul .current-menu-parent > a,
+  .c-main-menu ul .current_page_item > a,
+  .c-main-menu ul .current_page_parent > a,
+  .c-main-menu ul .current_page_ancestor > a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+}
+// END drop down styling
+
+
+// background cover for the main navigation
+.c-nav-bg {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+background: $color-blue-darkest;
+position: absolute;
+left: 0;
+top: calc(100% + 1px);
+width: 100%;
+height: 400px;
+z-index: -1;
+transition: opacity 0.3s ease, visibility 0.3s ease;
+border-bottom: 1px solid $color-blue-med;
+}
+
+.c-nav-bg.visible {
+  opacity: 0.97;
+  visibility: visible;
+}

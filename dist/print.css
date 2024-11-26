@@ -1,0 +1,14 @@
+/* @media print { */
+    body {
+        padding: 2pt;
+       }
+       h1, h2,h3,h4,h5,h6 {
+          margin-bottom: 15pt !important;
+       }
+       .no-print, .c-page-header-upper, .asl_w_container , .splide__pagination,  .video-background , .c-main-navigation, .c-modal-nav, .c-popup-search-header, .hc-offcanvas-nav, .mfp-wrap, .wp-block-spacer, .c-search-trigger, .c-modal-nav-button-wrap, .modal-menum, .c-footer-grid div:nth-of-type(2), .c-term-copywrite a, .c-page-footer .c-blk-btn {
+        display: none !important;
+       }
+       .c-page-header {
+        position: relative !important; 
+       }
+/* } */

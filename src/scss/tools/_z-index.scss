@@ -1,0 +1,15 @@
+/* ==========================================================================
+   BETTER Z-INDEXING
+   ========================================================================== */
+
+// FUNCTION: z-index better practice
+// source: https://www.sitepoint.com/using-sass-maps/
+// usage: z-index: (z(default) + 1);  or  z-index: z(overlay);
+$z-layers: ( pit: -9999, default: 1, dropdown: 1000, overlay: 2000, modal: 3001);
+@function z($key) {
+  @if map-has-key($z-layers, $key) {
+    @return map-get($z-layers, $key);
+  }
+  @warn "Unknown `#{$key}` in $z-layers.";
+  @return null;
+}

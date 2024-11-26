@@ -1,0 +1,16 @@
+{
+    "name": "acf/banner-block",
+    "title": "Accessible Image Banner",
+    "description": "Custom Image Banner with Accessibility Features",
+    "icon": "format-image",
+    "keywords": ["banner", "image", "accessibility"],
+    "category": "my-blocks",
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "banner.php"
+    },
+    "example": {
+        "attributes": {}
+    },
+    "align": "full"
+}

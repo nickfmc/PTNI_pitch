@@ -1,0 +1,17 @@
+{
+    "name": "acf/project-slider-block",
+    "title": "Project Slider",
+    "description": "Custom Slider",
+    "icon": "dashicons-format-gallery",
+    "script": [ "swiper", "project-slider" ],
+    "keywords": ["slider"],
+    "category": "myblocks",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "project-slider.php"
+    },
+    "example": {
+        "attributes": {}
+    },
+    "align": "full"
+}

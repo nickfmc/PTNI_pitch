@@ -1,0 +1,29 @@
+/* ==========================================================================
+   TERTIARY NAVIGATION
+   ========================================================================== */
+
+.c-tertiary-navigation {
+  display: none;
+}
+@media (width >= $bp-large) {
+  .c-tertiary-navigation {
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0.33rem;
+    right: 0.5rem;
+    & li {
+      border-left: 1px solid #000;
+      display: inline-block;
+      padding: 0 1rem 0 1rem;
+      &:first-of-type {
+        border-left: none;
+        padding-left: 0;
+      }
+    }
+    & a {
+      padding: 0.5rem 0.3rem;
+    }
+  }
+} /* end TERTIARY navigation breakpoint - large */
