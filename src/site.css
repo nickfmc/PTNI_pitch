@@ -3650,6 +3650,16 @@ table {
    HTML AND BODY ELEMENT STYLES
     - root font sizes set here so REMs scale with screen size increases
    ========================================================================== */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+  outline: 2px solid #F26531 !important;
+  outline-offset: -2px;
+}
+
 html {
   font-size: 16px;
   overflow-x: hidden;
@@ -3664,15 +3674,16 @@ body {
   position: relative;
 }
 
-a:focus,
-button:focus,
-input:focus,
-textarea:focus,
-select:focus {
-  outline: 1px solid #F26531 !important;
-  outline-offset: 0px;
+@media (forced-colors: active) {
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus,
+  [tabindex]:focus {
+    outline: 2px solid SelectedItem !important;
+  }
 }
-
 .is-dark-page:not(.search) {
   background-color: #1C2674;
 }
@@ -3814,13 +3825,13 @@ h6, .h6-style {
    ========================================================================== */
 hr, hr.wp-block-separator {
   display: block;
-  margin: 10px auto;
+  margin: 1rem auto;
   padding: 0;
   clear: both;
   width: 100%;
   border-top: 0;
-  margin: 60px auto 20px auto;
-  height: 1px;
+  border-color: #333;
+  margin: 50px auto;
 }
 
 /* ==========================================================================
@@ -4185,6 +4196,10 @@ body .gform_wrapper.gravity-theme .gfield_error label, body .gform_wrapper.gravi
     top: 15px;
   }
 }
+.gform_wrapper.gravity-theme .gform_validation_errors > ol a {
+  color: #fff !important;
+}
+
 /* ==========================================================================
    A TAG (links) STYLES
    ========================================================================== */
@@ -4223,7 +4238,7 @@ p {
   line-height: 1.6;
   margin: 0 0 30px 0;
   padding: 0;
-  font-size: clamp(1rem, 0.2vw + 0.95rem, 1.13rem);
+  font-size: 18px;
 }
 p.is-style-u-eyebrow-heading {
   font-family: "Open Sans Condensed", sans-serif;
@@ -4530,6 +4545,26 @@ main p + .is-style-u-eyebrow-heading {
   border-radius: 50%;
   top: 12px;
   left: 0;
+}
+
+.editor-content ul.u-no-dot li::before {
+  display: none;
+}
+
+.editor-content ul.u-no-dot li a mark {
+  position: relative;
+}
+
+.editor-content ul.u-no-dot li a mark::before {
+  display: block;
+  background-color: #F26531;
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  top: 12px;
+  left: -17px;
 }
 
 .editor-content ul li ul li {
@@ -5080,16 +5115,12 @@ main p + .is-style-u-eyebrow-heading {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
   gap: 5px;
   margin: 0;
 }
 #breadcrumbs ol li {
   padding: 0;
-  font-family: "Open Sans SemiCondensed", sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
   letter-spacing: 1px;
   font-weight: 400;
   color: #739DD2;
@@ -5112,7 +5143,6 @@ main p + .is-style-u-eyebrow-heading {
 
 .c-breadcrumbs-Dark #breadcrumbs ol li {
   color: #1C2674;
-  font-family: "Open Sans SemiCondensed", sans-serif;
 }
 .c-breadcrumbs-Dark #breadcrumbs ol li a {
   color: #1C2674;
@@ -5342,18 +5372,27 @@ main p + .is-style-u-eyebrow-heading {
   background-color: #1C2674;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100px; /* Hide it by default */
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  z-index: 10000;
+  /* Show on focus for keyboard users */
+}
+.skip-link:focus {
+  top: 0;
+}
+
 /* ==========================================================================
    MAIN LOGO
    ========================================================================== */
 .c-logo-main {
   position: absolute;
-  top: 13px;
+  top: 8px;
   z-index: 1;
-}
-@media (width >= 767px) {
-  .c-logo-main {
-    top: 8px;
-  }
 }
 .c-logo-main a {
   display: block;
@@ -5369,7 +5408,7 @@ main p + .is-style-u-eyebrow-heading {
 }
 @media (width >= 767px) {
   .c-logo-main img {
-    width: 190px;
+    width: 162px;
   }
 }
 
@@ -5426,6 +5465,13 @@ main p + .is-style-u-eyebrow-heading {
 #search-popup .c-search-form > div input::placeholder {
   color: #739DD2;
 }
+#search-popup .c-search-form > div input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>') no-repeat center center;
+  cursor: pointer;
+}
 #search-popup .c-search-close-button {
   position: absolute;
   width: 32px;
@@ -5467,8 +5513,8 @@ main p + .is-style-u-eyebrow-heading {
 #search-popup input:focus,
 #search-popup textarea:focus,
 #search-popup select:focus {
-  outline: 1px solid #F26531;
-  outline-offset: 0px;
+  outline: 2px solid #F26531;
+  outline-offset: -2px;
 }
 
 #search-popup[aria-hidden=false] {
@@ -5643,7 +5689,7 @@ main p + .is-style-u-eyebrow-heading {
 }
 @media (width >= 992px) {
   .c-main-menu li:hover ul,
-  .c-main-menu li.focus ul {
+  .c-main-menu li:focus ul {
     opacity: 1;
     visibility: visible;
   }
@@ -5698,13 +5744,19 @@ main p + .is-style-u-eyebrow-heading {
     border: 1px solid transparent;
   }
   .c-main-menu ul li a:focus, .c-main-menu ul li a:active {
-    border: 1px solid #F26531 !important;
-    outline-offset: 0px;
+    outline: 2px solid #F26531 !important;
+    outline-offset: -2px;
+  }
+  .c-main-menu ul li a:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    -webkit-box-shadow: 0 0 0 2px #0066CC;
+            box-shadow: 0 0 0 2px #0066CC;
   }
   .c-main-menu ul li a:focus,
   .c-main-menu ul li a:active {
-    outline: 1px solid #F26531 !important;
-    outline-offset: 0px;
+    outline: 2px solid #F26531 !important;
+    outline-offset: -2px;
   }
   .c-main-menu ul ul {
     visibility: visible;
@@ -5879,7 +5931,7 @@ main p + .is-style-u-eyebrow-heading {
   z-index: 100;
   margin: 0;
   position: absolute;
-  right: 30px;
+  right: 0;
   font-size: 40px;
   top: 10px;
   display: -webkit-box;
@@ -5899,7 +5951,7 @@ main p + .is-style-u-eyebrow-heading {
     top: 10px;
   }
 }
-@media (width >= 992px) {
+@media (width >= 1206px) {
   .c-modal-nav-button-wrap {
     display: none;
   }
@@ -6720,7 +6772,7 @@ html.has-modal-nav-open {
   display: block;
 }
 
-@media (width >= 992px) {
+@media (width >= 1206px) {
   .main-menu.wp-block-navigation {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -6867,7 +6919,7 @@ html.has-modal-nav-open {
   font-weight: 600;
 }
 .c-mobile-menu a:focus {
-  outline: 1px solid #F26531;
+  outline: 2px solid #F26531;
 }
 
 .c-cl-mobile-nav-footer {
@@ -7071,7 +7123,7 @@ html.has-modal-nav-open {
   padding: 7px 5px !important;
 }
 .c-modal-nav form.c-search-form div .search-submit:focus {
-  outline: 1px solid #F26531;
+  outline: 2px solid #F26531;
 }
 
 /* ==========================================================================

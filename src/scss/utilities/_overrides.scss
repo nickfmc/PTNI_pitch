@@ -3,3 +3,81 @@
    ========================================================================== */
 
 // ideally this file is forever blank. likely it won't be. :(
+
+.gb-tabs__buttons {
+   button {
+      position: relative;
+   
+   }
+   button::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 30px;
+      background-color: $color-blue-med;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+   }
+   button:last-of-type::after {
+      display: none;
+   }
+}
+
+.gb-accordion__toggle {
+   transition: $transition-ease;
+}
+.gb-accordion:not(.is-dark-accordion) .gb-accordion__toggle:hover, .gb-accordion:not(.is-dark-accordion) .gb-accordion__item.gb-accordion__item-open {
+   background-color: #fff !important;
+   .gb-icon {
+       
+         color: #fff;
+      background-color: $color-blue-darkest;
+      svg {
+         rect{
+            fill: #fff !important;
+         }
+      }
+   }
+}
+
+
+.gb-accordion__item.gb-accordion__item-open .gb-accordion__toggle:hover, .gb-accordion:not(.is-dark-accordion) .gb-accordion__toggle:hover {
+   @media(width >= $bp-medium) {
+      .gb-icon {
+       
+         color: $color-blue-darkest;
+      background-color: #fff;
+      svg {
+         rect{
+            fill: $color-blue-darkest !important;
+         }
+      }
+   }
+   } 
+
+}
+
+
+
+
+.wsp-pages-title {
+   display: none;
+}
+
+.c-accordion-tittle {
+@media(width <= $bp-medium) {
+font-size: 20px !important;
+} 
+}
+
+.gb-accordion__toggle {
+   .gb-icon {
+      flex: 0 0 auto;
+   }
+}
+
+.page-id-73 .c-page-footer{
+margin-top: -1px;
+}

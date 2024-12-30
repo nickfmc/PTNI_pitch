@@ -128,116 +128,51 @@ class Custom_Menu_Walker extends Walker_Nav_Menu {
 }
 
 
-// class Custom_Menu_Walker extends Walker_Nav_Menu {
-//     // Start Level
-//     function start_lvl(&$output, $depth = 0, $args = array()) {
-//         $indent = str_repeat("\t", $depth);
-//         $output .= "\n$indent<ul class=\"sub-menu\" role=\"menu\">\n";
-//     }
+// dynamic GB alt tags
+add_filter( 'render_block', function( $content, $block ) {
+    if (
+        'generateblocks/image' !== $block['blockName'] ||
+        ! isset( $block['attrs']['mediaId'] )
+    ) {
+        return $content;
+    }
 
-//     // Start Element
-//     function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
-//         $indent = ($depth) ? str_repeat("\t", $depth) : '';
+    $image_alt = get_post_meta($block['attrs']['mediaId'], '_wp_attachment_image_alt', TRUE);
 
-//         $classes = empty($item->classes) ? array() : (array) $item->classes;
-//         $classes[] = 'menu-item-' . $item->ID;
+    return preg_replace(
+        '/(alt=")([^"]*)(")/',
+        "$1{$image_alt}$3",
+        $content
+    );
 
-//         if (!empty($args->has_children)) {
-//             $classes[] = 'menu-item-has-children';
-//         }
+}, 10, 2 );
+ 
 
-//         $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
-//         $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
-
-//         $id = apply_filters('nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args);
-//         $id = $id ? ' id="' . esc_attr($id) . '"' : '';
-
-//         $output .= $indent . '<li' . $id . $class_names .'>';
-
-//         $atts = array();
-//         $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
-//         $atts['target'] = ! empty( $item->target )     ? $item->target     : '';
-//         $atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
-//         $atts['href']   = ! empty( $item->url )        ? $item->url        : '';
-
-//         if (!empty($args->has_children) && $depth == 0) {
-//             $atts['aria-haspopup'] = 'true';
-//             $atts['aria-expanded'] = 'false';
-//         }
-
-//         $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args);
-
-//         $attributes = '';
-//         foreach ($atts as $attr => $value) {
-//             if (! empty($value)) {
-//                 $value = ('href' === $attr) ? esc_url($value) : esc_attr($value);
-//                 $attributes .= ' ' . $attr . '="' . $value . '"';
-//             }
-//         }
-
-//         $item_output = $args->before;
-
-//         if (!empty($args->has_children) && $depth == 0) {
-//             $item_output .= '<button aria-haspopup="true" aria-expanded="false"><span>';
-//             $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-//             $item_output .= '</span></button>';
-//         } else {
-//             $item_output .= '<a'. $attributes .'><span>';
-//             $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-//             $item_output .= '</span></a>';
-//         }
-
-//         $item_output .= $args->after;
-
-//         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
-//     }
-
-//     // Check if item has children
-//     function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
-//         if (!$element)
-//             return;
-
-//         $id_field = $this->db_fields['id'];
-
-//         // Display this element
-//         if (is_array($args[0]))
-//             $args[0]['has_children'] = !empty($children_elements[$element->$id_field]);
-//         else if (is_object($args[0]))
-//             $args[0]->has_children = !empty($children_elements[$element->$id_field]);
-
-//         parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
-//     }
-// }
-// ****************** Grab custom data and input into Generate Block headline field ************
-
-                  // function custom_field_gb_query() {
-                  //   // Start output buffering
-                  //   ob_start();
-                  //     //  shortcode content
-                      
-
-                  //   $output = ob_get_clean();
-
-                  //   // Return the content as a string
-                  //   return $output;
-                  // }
-                  // add_shortcode('custom_field_gb_query', 'custom_field_gb_query');
+/**
+ * Optional: Customize the validation summary message at the top of the form
+ */
+function customize_gf_validation_summary($message, $form) {
+    return "Il y a des erreurs dans le formulaire. Veuillez les corriger avant de continuer.";
+}
+add_filter('gform_validation_message', 'customize_gf_validation_summary', 10, 2);
 
 
+add_filter('gform_field_validation', function($result, $value, $form, $field) {
+    if (!$result['is_valid'] && $result['message'] == 'This field is required.') {
+        $result['message'] = 'Ce champ est requis.';
+    }
+    return $result;
+}, 10, 4);
 
-                  // add_filter( 'render_block_generateblocks/headline', function( $block_content, $block ) {
-                  //   if ( 
-                  //     !is_admin() && 
-                  //     ! empty( $block['attrs']['className'] ) && 
-                  //     strpos( $block['attrs']['className'], 'is-field-name' ) !== false 
-                  //   ) {
-                  //     $post_id = get_the_ID();
-                  //     $block_content = do_shortcode('[custom_field_gb_query]');		
-                  //   }
 
-                  //   return $block_content;
-                  // }, 10, 2 );
+add_filter('gform_field_content', function($content, $field) {
+    if ($field->isRequired) {
+        $content = str_replace('(Required)', '(Requis)', $content);
+    }
+    return $content;
+}, 10, 2);
 
-// ****************** Grab custom data and input into Generate Block headline field ************
+ 
+
 
 ?>

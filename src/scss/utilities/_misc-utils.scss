@@ -2,126 +2,159 @@
    MISC UTILITIES
    ========================================================================== */
 
-.u-absolute {
-  position: absolute;
-}
-.u-relative {
-  position: relative;
-}
-
-.u-large-text, .is-style-large-text {
-  font-size: 1.625rem;
-}
-
-.u-flex {
-  display: flex;
-}
-.u-block {
-  display: block;
-}
-
-
-.u-text-center {
-  text-align: center;
-}
-
-
-.u-responsive-square-container {
-  width: 100%; /* Make the container responsive */
-  max-width: 400px; /* Set the maximum width of the container */
-  height: 0;
-  padding-bottom: 100%; /* Maintain a square aspect ratio */
-  position: relative; /* Position relative to contain the image */
-  overflow: hidden; /* Hide any overflow */
-}
-
-.u-responsive-square-container img {
-  width: 100%; /* Ensure the image width is 100% of the container */
-  height: auto; /* Maintain the aspect ratio */
-  object-fit: cover; /* Cover the entire container */
-  position: absolute; /* Position absolute to cover the container */
-  top: 0;
-  left: 0;
-}
-
-.u-ttu {
-  text-transform: uppercase;
-}
-
-.u-outside-right {
-  position: relative;
-  &::after {
-    content: "";
-    display: block;
-    height: 100%;
-    width: 1px;
-    background-color: #026CB6;
+   .u-absolute {
     position: absolute;
-    right: -10px;
-    top: 0;
   }
-}
-
-.u-outside-lines {
-  position: relative;
-  &::before {
-    content: '';
+  .u-relative {
+    position: relative;
+  }
+  
+  .u-large-text, .is-style-large-text {
+    font-size: 1.625rem;
+  }
+  
+  .u-flex {
+    display: flex;
+  }
+  .u-block {
     display: block;
-    height: 100%;
-    width: 1px;
-    background-color: $color-blue-med;
-    position: absolute;
-    left: -10px;
-    top: 0;
   }
-  &::after {
-    content: '';
-    display: block;
-    height: 100%;
-    width: 1px;
-    background-color: $color-blue-med;
-    position: absolute;
-    right: -10px;
-    top: 0;
+  
+  
+  .u-text-center {
+    text-align: center;
   }
-}
-// ++ media or embed aspect ratio +++++++++++++++++++++++++++++++++
-.u-aspect-16x9 {
-  padding-bottom: 56.25%; /* (9 / 16 = 0.5625) */
-}
-
-.mb-0 {
-  margin-bottom: 0 !important;
-}
-
-
-// ++ float orphan fix trick +++++++++++++++++++++++++++++++++
-.u-orphan-fix {
-  overflow: hidden;
-  width: auto;
-}
-
-.u-no-underline a[href^="tel:"] {
-  text-decoration: none !important;
-}
-// ++ visibility classes ++++++++++++++++++++++++++++++++++++
-.u-visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-.u-visually-hidden-focusable:active,
-.u-visually-hidden-focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-}
+  
+  
+  .u-responsive-square-container {
+    width: 100%; /* Make the container responsive */
+    max-width: 400px; /* Set the maximum width of the container */
+    height: 0;
+    padding-bottom: 100%; /* Maintain a square aspect ratio */
+    position: relative; /* Position relative to contain the image */
+    overflow: hidden; /* Hide any overflow */
+  }
+  
+  .u-responsive-square-container img {
+    width: 100%; /* Ensure the image width is 100% of the container */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Cover the entire container */
+    position: absolute; /* Position absolute to cover the container */
+    top: 0;
+    left: 0;
+  }
+  
+  .u-ttu {
+    text-transform: uppercase;
+  }
+  
+  .u-outside-right {
+    position: relative;
+    &::after {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 1px;
+      background-color: #026CB6;
+      position: absolute;
+      right: -10px;
+      top: 0;
+    }
+  }
+  
+  .u-outside-lines {
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 1px;
+      background-color: $color-blue-med;
+      position: absolute;
+      left: -10px;
+      top: 0;
+    }
+    &::after {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 1px;
+      background-color: $color-blue-med;
+      position: absolute;
+      right: -10px;
+      top: 0;
+    }
+  }
+  // ++ media or embed aspect ratio +++++++++++++++++++++++++++++++++
+  .u-aspect-16x9 {
+    padding-bottom: 56.25%; /* (9 / 16 = 0.5625) */
+  }
+  
+  .mb-0 {
+    margin-bottom: 0 !important;
+  }
+  
+  
+  // ++ float orphan fix trick +++++++++++++++++++++++++++++++++
+  .u-orphan-fix {
+    overflow: hidden;
+    width: auto;
+  }
+  
+  .u-no-underline a[href^="tel:"] {
+    text-decoration: none !important;
+    text-decoration-color: $color-orange-dark !important;
+    &:hover {
+      text-decoration: underline !important;
+      text-decoration-color: $color-orange-dark !important;
+    }
+  }
+  // ++ visibility classes ++++++++++++++++++++++++++++++++++++
+  .u-visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .u-visually-hidden-focusable:active,
+  .u-visually-hidden-focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+  
+  
+  .u-no-spacing-lists {
+  .gb-grid-column  {
+    div {
+      ul:last-of-type, ol:last-of-type {
+        @media(width >= $bp-medium) {
+          margin-bottom: 0;
+          li:last-of-type {
+            padding-bottom: 0;
+          }
+        } 
+        
+       
+      }
+    }
+  }
+  }
+  
+  .no-phone-link {
+  
+    color: inherit;
+    text-decoration: none;
+    pointer-events: none;
+    cursor: text;
+    -webkit-text-fill-color: inherit;
+    color: inherit;
+  }

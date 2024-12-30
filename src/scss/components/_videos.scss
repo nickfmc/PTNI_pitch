@@ -6,6 +6,7 @@
     aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
     // padding-top: 56.25%; /* 16:9 Aspect Ratio */
     border-radius: 8px;
+    cursor: pointer;
 
     video {
         // position: absolute;
@@ -16,6 +17,31 @@
         border-radius: 8px;
     }
 
+    .c-play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: $color-orange-dark;
+        svg {
+            fill: $color-orange-dark;
+            width: 45px;
+            height: 45px;
+        }
+        &.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
     .controls {
         display: flex;
         flex-direction: column;
@@ -70,6 +96,5 @@
 .transcript {
     margin-top: 30px;
     margin-top: 20px;
-    padding: 10px;
-    border: 1px dashed #ccc;
+padding-top: 10px;
 }

@@ -22,15 +22,16 @@
 </svg></button>
   <form role="search" method="get" id="search-form" class="c-search-form" action="<?php echo home_url( '/' ); ?>">
     <div>
-      <label for="s" class="u-visually-hidden">Search for:</label>
-      <input type="search" id="s" name="s" value="" class="search-input" placeholder="Search..." />
-      <button type="submit" id="search-submit" class="search-submit">Search</button>
+      <label for="s" class="u-visually-hidden">Rechercher :</label>
+      <input type="search" id="s" name="s" value="" class="search-input" placeholder="Recherche..." />
+      <button type="submit" id="search-submit" class="search-submit">Rechercher</button>
     </div>
   </form>
 </div>
 <div class="c-lang-select" role="navigation" aria-label="Language selector">
-       <a href="/" class="c-lang-select-btn c-lang-select--current" id="lang-en" aria-label="Select English">EN</a>
-        <a href="https://fr.tnpi.ca/" class="c-lang-select-btn" id="lang-fr" aria-label="Select French">FR</a>
+<a href="/" class="c-lang-select-btn c-lang-select--current" id="lang-fr" aria-label="Select French">FR</a>
+
+       <a href="https://tnpi.ca" class="c-lang-select-btn " id="lang-en" aria-label="Select English">EN</a>
 </div>
 
 </nav>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="fr-CA">
 
 <head>
   <meta charset="utf-8">
@@ -26,11 +26,18 @@
     body_class($classes); 
 ?> itemscope itemtype="https://schema.org/WebPage">
 
+<!-- Skip links should be the first focusable elements -->
+<div class="skip-links">
+<a href="#main-content" class="skip-link">Passer au contenu principal</a>
+<a href="#site-navigation" class="skip-link">Passer à la navigation principale</a>
+<a href="#c-page-footer" class="skip-link">Passer au pied de page</a>
+</div>
+
   <header id="c-page-header" class="o-section c-page-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
     <div class="c-page-header-upper">
       <div class="o-wrapper-wide">
         <div class="c-page-header-upper-inner" role="contentinfo" aria-label="Emergency Contact">
-            <span>Emergency Line: <a href="tel:18003610608" aria-label="Call Emergency Line">1-800-361-0608</a></span>
+            <span>Ligne d'urgence :<a href="tel:18003610608" aria-label="Appeler la ligne d'urgence 1 800 361 0608">1-800-361-0608</a></span>
         </div>
       </div>
     </div>
@@ -41,11 +48,7 @@
         <?php get_template_part( 'template-part/header/logo' ); ?>
         <?php get_template_part( 'template-part/navigation/nav-main' ); ?>
         <?php get_template_part( 'template-part/navigation/nav-tertiary' ); ?>
-        <!-- <div class="c-modal-nav-button-wrap">
-          <a class="toggle hc-nav-trigger mobile-nav" href="#" role="button" aria-label="Open Menu" aria-controls="hc-nav-1" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"/></svg>
-          </a>
-        </div> -->
+     
         <div class="c-cl-mobile-nav">
           <button href="#" id="open-modal-nav" class="c-modal-nav-button" aria-haspopup="true" aria-expanded="false" aria-label="Open menu">
           
@@ -55,8 +58,9 @@
             </button>
 
             <div class="c-lang-select  c-lang-select--mobile" role="navigation" aria-label="Language selector">
-       <a href="/" class="c-lang-select-btn c-lang-select--current" id="lang-en" aria-label="Select English">EN</a>
-        <a href="https://fr.tnpi.ca/" class="c-lang-select-btn" id="lang-fr" aria-label="Select French">FR</a>
+            <a href="https://ptni.ca/" class="c-lang-select-btn c-lang-select--current" id="lang-fr" aria-label="Sélectionner le français">FR</a>
+            <a href="https://tnpi.ca" class="c-lang-select-btn " id="lang-en" aria-label="Sélectionner l'anglais">EN</a>
+        
 </div>
     
           <div class="x-body-wrapper"></div>
@@ -67,14 +71,14 @@
               <nav class="c-modal-nav" aria-label="Mobile navigation menu" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
               <div class="c-modal-nav-header-upper">
                 <div class="o-wrapper-wide">
-                  <div class="c-page-header-upper-inner" role="contentinfo" aria-label="Emergency Contact">
-                      <span>Emergency Line: <a href="tel:18003610608" aria-label="Call Emergency Line">1-800-361-0608</a></span>
+                <div class="c-page-header-upper-inner" role="contentinfo" aria-label="Emergency Contact">
+                      <span>Ligne d'urgence: <a href="tel:18003610608" aria-label="Appeler la ligne d'urgence 1 800 361 0608">1-800-361-0608</a></span>
                   </div>
                 </div>
               </div>
               <div class="c-modal-nav-header">
 
-              <button id="close-modal-nav" class="c-close-modal-nav" aria-label="Close menu" aria-expanded="flase">
+              <button id="close-modal-nav" class="c-close-modal-nav" aria-label="Fermer le menu" aria-expanded="flase">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 50 50"><path fill="currentColor" d="m37.304 11.282l1.414 1.414l-26.022 26.02l-1.414-1.413z"/><path fill="currentColor" d="m12.696 11.282l26.022 26.02l-1.414 1.415l-26.022-26.02z"/></svg>
               </button>
               
@@ -84,19 +88,19 @@
                   </a>
                 </div> <!-- /c-main-logo -->
                 <div class="c-lang-select  c-lang-select--mobile-menu" role="navigation" aria-label="Language selector">
-       <a href="/" class="c-lang-select-btn c-lang-select--current" id="lang-en" aria-label="Select English">EN</a>
-        <a href="https://fr.tnpi.ca/" class="c-lang-select-btn" id="lang-fr" aria-label="Select French">FR</a>
+                <a href="https://ptni.ca/" class="c-lang-select-btn c-lang-select--current" id="lang-fr" aria-label="Sélectionner le français">FR</a>
+                <a href="https://tnpi.ca" class="c-lang-select-btn " id="lang-en" aria-label="Sélectionner l'anglais">EN</a>
+        
 </div>
               </div>
                 <?php  gdt_nav_menu( 'mobile-menu', 'c-mobile-menu' ); // Adjust using Menus in WordPress Admin ?>
 
                 <form role="search" method="get" id="search-form" class="c-search-form" action="<?php echo home_url( '/' ); ?>">
   <fieldset>
-    <legend class="u-visually-hidden">Search</legend>
-    <div>
-      <label for="s" class="u-visually-hidden">Search for:</label>
-      <input type="search" id="s" name="s" value="" class="search-input" placeholder="Search..." aria-label="Search" />
-      <button type="submit" id="search-submit" class="search-submit" aria-label="Submit search"><svg version="1.1" id="main" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40.844px" height="40.84px" viewBox="0 0 40.844 40.84" enable-background="new 0 0 40.844 40.84" xml:space="preserve">
+    <legend class="u-visually-hidden">Rechercher</legend> 
+      <label for="s" class="u-visually-hidden">Rechercher :</label> 
+      <input type="search" id="s" name="s" value="" class="search-input" placeholder="Rechercher..." aria-label="Rechercher" />
+      <button type="submit" id="search-submit" class="search-submit" aria-label="Soumettre la recherche"><svg version="1.1" id="main" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40.844px" height="40.84px" viewBox="0 0 40.844 40.84" enable-background="new 0 0 40.844 40.84" xml:space="preserve">
 <path fill="#FFFFFF" d="M40.844,37.94L40.844,37.94l-8.84-8.837c2.438-3.065,3.896-6.942,3.896-11.154C35.9,8.052,27.85,0,17.951,0
 	S0,8.052,0,17.949c0,9.898,8.053,17.95,17.951,17.95c4.213,0,8.088-1.459,11.154-3.896l8.838,8.836v0.001h2.9V37.94L40.844,37.94z
 	 M4,17.949C4,10.258,10.26,4,17.951,4S31.9,10.258,31.9,17.949c0,3.563-1.344,6.817-3.551,9.285l-1.111,1.113

@@ -15,10 +15,14 @@
 // }
 
 .c-img-banner {
-    height: 450px;
+
+    height: 330px;
     overflow: hidden; // Ensure the image doesn't overflow the container
     background-color: $color-blue-darkest;
+@media(width >= $bp-medium) {
+    height: 450px;
 
+} 
     @media (width >= $bp-large) {
         height: 665px;
     }
@@ -40,6 +44,13 @@
         opacity: 1; // Final state: visible
         transform: scale(1); // Final state: normal size
     }
+}
+
+.c-img-banner-hero {
+margin-top: 95px;
+@media(width >= $bp-medium) {
+margin-top: 0;
+} 
 }
 
 // circled images
@@ -66,26 +77,73 @@
 
 .c-home-hero {
 position: relative;
+// padding: 0 30px; 
+figure {
+    margin-top: 95px;
+    margin-bottom: 0;
+ 
+    @media(width >= $bp-medium) {
+        margin-top: 0; 
+    
+    } 
 
+//  &::after { 
+//     content: "";
+//     display: block;
+//     height: 100%;
+//     width: 1px;
+//     background-color: #026CB6;
+//     position: absolute;
+//     right: 30px;
+//     top: 0;
+//     z-index: 20;
+//  }
+//  &::before { 
+//     content: "";
+//     display: block;
+//     height: 100%;
+//     width: 1px;
+//     background-color: #026CB6;
+//     position: absolute;
+//     right: 20px;
+//     top: 0;
+//     z-index: 20;
+//  }
+}
+}
+
+.c-home-hero-cover  {
+    // @media(width >= $bp-medium) {
+    //     padding: 0 30px;
+    
+    // } 
 }
 
 .c-home-hero-img {
-    z-index: -1;
-    position: absolute;
+
     max-width: 100% !important;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+  
+    @media(width >= $bp-medium) {
+        position: absolute;
+        z-index: -1;
+
+    } 
 
     img {
-        position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100% !important;
         object-fit: cover;
         object-position: center;
+        @media(width >= $bp-medium) {
+    position: absolute;
+        
+        } 
     }
 
 }
@@ -154,5 +212,72 @@ svg {
 .c-releated-content {
      div {
         border-color: $color-blue-med;
+    }
+}
+
+
+.c-tab-toggle {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    border: 1px solid $color-blue-med;
+    background-color: $color-blue-dark;
+    position: relative;
+    margin-right: 15px;
+    &::after {
+        content: '';
+        display: block;
+        width: 15px;
+        height: 1px;
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &::before {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 15px;
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+.gb-tabs__button.gb-block-is-current .c-tab-toggle{
+    &::before {
+        display: none;
+    }
+}
+
+.gb-tabs__button:not(.gb-block-is-current) {
+    &:hover {
+        .c-tab-toggle {
+            background-color: #fff;
+            &::before, &::after {
+                background-color: $color-blue-darkest;
+            }
+        }
+    }
+}
+
+
+.skip-link {
+    position: absolute;
+    top: -100px; /* Hide it by default */
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    z-index: 10000;
+    
+    /* Show on focus for keyboard users */
+    &:focus {
+        top: 0;
     }
 }

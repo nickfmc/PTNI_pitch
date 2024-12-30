@@ -2,35 +2,63 @@
    HTML AND BODY ELEMENT STYLES
     - root font sizes set here so REMs scale with screen size increases
    ========================================================================== */
+   $focus-color: #F26531; // Example focus color
+   // Create a placeholder for focus styles
+%focus-outline {
+  outline: 2px solid $focus-color !important;
+  outline-offset: -2px;
+}
+
+
+
  
 html {
  font-size: 16px;
+ overflow-x: hidden;
+
 }
 
 // html {
 //   @include responsive-font(1.85vw, 16px, 18px, 18px);
 // }
 
+
+
 body {
   color: $text-color;
   font-family: $font-primary;
   line-height: $line-height-normal;
   -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  position: relative;
   // padding-top: $page-header-height // match height of header used by headroom.js (if using)
+ 
 }
 
-$focus-color: #F26531; // Example focus color
+
 
 a:focus,
 button:focus,
 input:focus,
 textarea:focus,
-select:focus {
-  outline: 1px solid $focus-color;
-  outline-offset: 0px;
-  
+select:focus,
+[tabindex]:focus {  // includes any custom tabindex elements
+  @extend %focus-outline;
 }
 
+// High contrast mode support
+@media (forced-colors: active) {
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus,
+  [tabindex]:focus {
+    outline: 2px solid SelectedItem !important;
+  }
+}
+
+
 .is-dark-page:not(.search) {
-  background-color: $color-blue-dark;
+  background-color: $color-blue-darkest;
 }

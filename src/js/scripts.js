@@ -4,7 +4,206 @@
  */
 
 // *********************** START CUSTOM JS *********************************
+// Translate form steps Gforms
+document.addEventListener('DOMContentLoaded', function() {
+    // Initial page load
+    updateProgressBarText();
 
+    // Handle Gravity Forms page transitions
+    if (typeof gform !== 'undefined') {
+        // After form page changes
+        gform.addAction('gform_page_loaded', function() {
+            updateProgressBarText();
+        });
+
+        // After form render
+        gform.addAction('gform_post_render', function() {
+            updateProgressBarText();
+        });
+
+        // Add specific AJAX completion handler
+        jQuery(document).on('gform_post_conditional_logic', function() {
+            updateProgressBarText();
+        });
+
+        // Additional AJAX event handler
+        jQuery(document).bind('gform_page_loaded', function() {
+            updateProgressBarText();
+        });
+    }
+});
+
+function updateProgressBarText() {
+    // Increased delay to ensure AJAX content is loaded
+    setTimeout(function() {
+        const progressBar = document.querySelector('.gf_progressbar_wrapper');
+        if (progressBar) {
+            const titleElement = progressBar.querySelector('.gf_progressbar_title');
+            if (titleElement && titleElement.textContent.includes('Step')) {
+                titleElement.textContent = titleElement.textContent
+                    .replace('Step', 'Étape')
+                    .replace('of', 'sur');
+            }
+        }
+    }, 100); // Increased timeout for AJAX completion
+}
+
+
+// END Translate form steps Gforms
+
+
+// fix empty figure usage
+function applyRoleToFigures() {
+    // Get all figure elements
+    const figures = document.querySelectorAll('figure');
+
+    figures.forEach(figure => {
+        // Get all child nodes (including text nodes)
+        const children = Array.from(figure.childNodes);
+        
+        // Filter out whitespace text nodes
+        const nonWhitespaceChildren = children.filter(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                return node.textContent.trim().length > 0;
+            }
+            return true;
+        });
+
+        // Check if there's exactly one child and it's an img
+        if (nonWhitespaceChildren.length === 1 && 
+            nonWhitespaceChildren[0].nodeName.toLowerCase() === 'img') {
+            figure.setAttribute('role', 'none');
+        }
+    });
+}
+
+// Run the function when the DOM is fully loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyRoleToFigures);
+} else {
+    applyRoleToFigures();
+}
+
+// END fix empty figure usage
+
+
+
+// external link accessibility script
+class AccessibilityEnhancer {
+    constructor() {
+        this.newTabText = '(Opens in a new tab)';
+        this.externalLinkText = '(External link)';
+        this.pdfText = '(PDF file)'; 
+    }
+  
+    enhanceLinks() {
+        const links = document.querySelectorAll('a');
+        
+        links.forEach(link => {
+            this.enhanceSingleLink(link);
+        });
+    }
+  
+    enhanceSingleLink(link) {
+      const isNewTab = link.target === '_blank' || link.target === 'blank';
+      const isExternal = this.isExternalLink(link);
+      const isPDF = this.isPDFLink(link); // Add this line
+      const existingLabel = link.getAttribute('aria-label');
+      const linkText = link.textContent || link.innerText;
+      
+      let newLabel = existingLabel || linkText;
+  
+      // Add appropriate notices
+      if (isNewTab && !newLabel.includes(this.newTabText)) {
+          newLabel += ` ${this.newTabText}`;
+      }
+      if (isExternal && !newLabel.includes(this.externalLinkText)) {
+          newLabel += ` ${this.externalLinkText}`;
+      }
+      if (isPDF && !newLabel.includes(this.pdfText)) { // Add this block
+          newLabel += ` ${this.pdfText}`;
+      }
+  
+        // Set the enhanced label
+        if (newLabel !== linkText) {
+            link.setAttribute('aria-label', newLabel.trim());
+        }
+  
+        // Add security attributes for external links
+        if (isNewTab || isExternal) {
+            const rel = 'noopener noreferrer';
+            const currentRel = link.getAttribute('rel');
+            if (!currentRel || !currentRel.includes(rel)) {
+                link.setAttribute('rel', rel);
+            }
+        }
+    }
+  
+    isExternalLink(link) {
+        if (!link.href) return false;
+        
+        const currentDomain = window.location.hostname;
+        try {
+            const linkDomain = new URL(link.href).hostname;
+            return linkDomain !== currentDomain;
+        } catch (e) {
+            return false;
+        }
+    }
+  
+    isPDFLink(link) {
+        if (!link.href) return false;
+        
+        // Check if the URL ends with .pdf
+        if (link.href.toLowerCase().endsWith('.pdf')) return true;
+        
+        // Check if the MIME type is available and is PDF
+        if (link.type && link.type.toLowerCase() === 'application/pdf') return true;
+        
+        // Check if the download attribute exists and the file ends with .pdf
+        if (link.hasAttribute('download')) {
+            const downloadValue = link.getAttribute('download');
+            if (downloadValue && downloadValue.toLowerCase().endsWith('.pdf')) return true;
+        }
+        
+        return false;
+    }
+    
+  
+    // Method to handle dynamically added content
+    observe() {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === 1) { // ELEMENT_NODE
+                        // Check the added element itself
+                        if (node.tagName === 'A') {
+                            this.enhanceSingleLink(node);
+                        }
+                        // Check for links within the added element
+                        const links = node.querySelectorAll('a');
+                        links.forEach(link => this.enhanceSingleLink(link));
+                    }
+                });
+            });
+        });
+  
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+  }
+  
+  // Usage
+  const accessibilityEnhancer = new AccessibilityEnhancer();
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    accessibilityEnhancer.enhanceLinks();
+    accessibilityEnhancer.observe(); // Optional: observe for dynamic content
+  });
+  // END external link accessibility script
+  
 // Accessible Video Player
 document.addEventListener('DOMContentLoaded', function() {
     const videoPlayers = document.querySelectorAll('.video-player');
@@ -295,7 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.preventDefault();
                 firstElement.focus();
             }
-        }
+        } 
     }
 });
 
@@ -583,12 +782,16 @@ buttons.forEach(function(button) {
   // Add the class 'c-tab-toggle' to the span
   span.classList.add('c-tab-toggle');
   
+  // Add role="presentation" to the span
+  span.setAttribute('role', 'presentation');
+  
   // Optionally, you can add some text or attributes to the span
   span.textContent = ''; // Replace with your desired text
   
   // Insert the span before the button text
   button.insertBefore(span, button.firstChild);
 });
+
 
 
 
@@ -600,101 +803,6 @@ jQuery( document ).ready(function( $ ) {
    var templateUrl = object_name.templateUrl;
    
 
-  //  $('#mobile-nav').hcOffcanvasNav({
-  //   disableAt: 1024,
-  //   width: 280,
-  //   customToggle: $('.toggle'),
-  //    pushContent: '.menu-slide',
-  //   levelTitles: true,
-  //   position: 'right',
-  //   levelOpen: 'expand',
-  //   navTitle: $('<div class="c-mobile-menu-header"><a href="/"><img src="'+ templateUrl + '/img/logo.svg"></a></div>'),
-  //   levelTitleAsBack: true
-  // });
-
-
-  // modal menu init ----------------------------------
-  // var modal_menu = jQuery("#c-modal-nav-button").animatedModal({
-  //   modalTarget: 'modal-navigation',
-  //   animatedIn: 'slideInDown',
-  //   animatedOut: 'slideOutUp',
-  //   animationDuration: '0.40s',
-  //   color: '#dedede',
-  //   afterClose: function() {
-  //     $( 'body, html' ).css({ 'overflow': '' });
-  //   }
-  // });
-
-  // // get last and current hash + update on hash change
-  // var currentHash = function() {
-  //   return location.hash.replace(/^#/, '')
-  // }
-  // var last_hash
-  // var hash = currentHash()
-  // $(window).bind('hashchange', function(event) {
-  //   last_hash = hash;
-  //   hash = currentHash();
-  // });
-
-  // enable back/foward to close/open modal --------------------------
-  // $("#c-modal-nav-button").on('click', function(){ window.location.href = ensureHash("#menu"); });
-  // function ensureHash(newHash) {
-  //   if (window.location.hash) {
-  //     return window.location.href.substring(0, window.location.href.lastIndexOf(window.location.hash)) + newHash;
-  //   }
-  //   return window.location.hash + newHash;
-  // }
-  // // if back button is pressed, close the modal
-  // $(window).on('hashchange', function (event) {
-  //   if (last_hash == 'menu' && hash == '') {
-  //     modal_menu.close();
-  //     history.replaceState('', document.title, window.location.pathname);
-  //   } // if forward button, open the modal
-  //   else if (window.location.hash == "#menu"){
-  //     modal_menu.open();
-  //   }
-  // });
-
-  // // if close button is clicked, clear the #menu hash added above
-  // $('.close-modal-navigation').on('click', function (e) {
-  //   history.replaceState('', document.title, window.location.pathname);
-  // });
-
-  // // close modal menu if esc key is used ------------------------
-  // $(document).keyup(function(ev){
-  //   if(ev.keyCode == 27 && hash == 'menu') {
-  //     window.history.back();
-  //   }
-  // });
-
-
-  // Magnific as menu popup
-  // MENU POPUP
-  // $('#c-modal-nav-button').magnificPopup({
-  //   type: 'inline',
-  //   removalDelay: 700, //delay removal by X to allow out-animation
-  //   showCloseBtn: false,
-  //   closeOnBgClick: false,
-  //   autoFocusLast: false,
-  //   fixedContentPos: false, 
-  //   fixedContentPos: true,
-  //   callbacks: {
-  //     beforeOpen: function() {
-  //        this.st.mainClass = 'mfp-move-from-side menu-popup';
-  //        $('body').addClass('mfp-active');
-  //     },
-  //     open: function() { 
-  //       $('#close-modal, .close-modal-navigation').on('click',function(event){
-  //         event.preventDefault();
-  //         $.magnificPopup.close(); 
-  //       }); 
-  //   },
-  //   beforeClose: function() {
-  //   $('body').removeClass('mfp-active');
-  // }
-  //   },
-  //   midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
-  // });
 
 });
 // *********************** END CUSTOM JQUERY DOC READY SCRIPTS *********************************

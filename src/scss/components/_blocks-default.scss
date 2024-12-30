@@ -83,8 +83,11 @@ $paddingHorizontal: 30px;
  }
 
  .editor-content > .gb-container.alignfull .gb-container.u-no-xpad {
-  padding-left: 0;
-  padding-right: 0;
+  @media(width >= 1460px) {
+    padding-left: 0;
+    padding-right: 0;
+  } 
+  
  }
 
 
@@ -190,7 +193,7 @@ li {
 }
 
 .editor-content ul.has-large-font-size li , .editor-content ul li.has-large-font-size {
-  font-size: clamped(21px, 24px) !important; 
+  font-size: clamped(20px, 24px) !important; 
   &::before {
     top: 18px;
   }
@@ -206,6 +209,27 @@ li {
   top: 12px;
   left: 0;
 }
+
+.editor-content ul.u-no-dot li::before {
+  display: none;
+}
+
+.editor-content ul.u-no-dot li a mark {
+  position: relative;
+}
+
+.editor-content ul.u-no-dot li a mark::before {
+  display: block; 
+  background-color: $color-orange-dark;
+  content: "";
+	position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  top: 12px;
+  left: -17px;
+}
+
 
 .editor-content ul li ul li {
   padding-left: 20px;
@@ -223,7 +247,7 @@ top: 15px;
   margin-top: 30px;
 }
 
-.editor-content .o-blue-wrapper  ul li::before {
+.editor-content .o-blue-wrapper  ul li::before, .editor-content .o-blue-wrapper-after-banner  ul li::before {
   background-color: $color-orange;
 }
 
@@ -336,8 +360,10 @@ body .u-break-early {
 
   .has-large-font-size {
     line-height: 1.25;
-    font-size: clamped(21px, 24px) !important; 
+    font-size: clamped(19px, 24px) !important; 
     line-height: 1.74;
+    word-spacing: 0 !important;
+    font-weight: 400 !important;
   }
 
   .has-small-font-size {

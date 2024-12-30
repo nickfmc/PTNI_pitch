@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="o-layout-row">
-  <main class="o-wrapper-wide" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/WebPageElement">
+  <main id="main-content" class="o-wrapper-wide" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/WebPageElement">
     
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
       <?php get_template_part( 'template-part/post/content' ); ?>

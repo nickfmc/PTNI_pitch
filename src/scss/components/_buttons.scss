@@ -2,31 +2,40 @@
    LINK BUTTON STYLES
    ========================================================================== */
 
-.c-btn-primary {
-  display: block;
-  text-align: center;
-  margin: 1rem 0 1.75rem 0;
-}
-.c-blk-btn a, .c-btn-primary a, .wp-block-button.is-style-standard a.wp-block-button__link, .wp-block-button.is-style-standard .wp-block-button__link {
-  background-color: $color-gray-med;
-  border: none; 
-  color: $color-white;
-  display: inline-block;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
-  padding: 0.75rem 1.25rem;
-  transition: $transition-ease;
-  white-space: nowrap;
-  letter-spacing: 1px;
-  &:hover {
-    background-color: $color-gray-light;
-    color: $color-black;
+   .c-btn-primary {
+    display: block;
+    text-align: center;
+    margin: 1rem 0 1.75rem 0;
   }
-}
-
-
-
-.btn-dark {
-letter-spacing: 1px;
-}
+  .c-blk-btn a, .c-btn-primary a, .wp-block-button.is-style-standard a.wp-block-button__link, .wp-block-button.is-style-standard .wp-block-button__link {
+    background-color: $color-gray-med;
+    border: none; 
+    color: $color-white;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 1 !important;
+    text-transform: uppercase;
+    padding: 0.75rem 1.25rem;
+    transition: $transition-ease;
+    white-space: nowrap;
+    letter-spacing: 1px;
+  
+    &:hover {
+      background-color: $color-gray-light;
+      color: $color-black;
+    }
+  }
+  
+  
+  
+  .btn-dark {
+  letter-spacing: 1px;
+  line-height: 1 !important;
+  text-align: center !important;
+  
+  }
+  
+  .gb-button {
+  line-height: 1 !important;
+  
+  }

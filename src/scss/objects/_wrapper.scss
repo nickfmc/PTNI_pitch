@@ -2,28 +2,56 @@
    WRAPPERS
    ========================================================================== */
 
-.o-wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: $wrapper-width-base;
-  width: 100%;
-}
-
-.o-wrapper-wide {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: $wrapper-width-wide;
-  width: 100%;
-}
-
-.o-wrapper-narrow {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: $wrapper-width-narrow;
-  width: 100%;
-}
-
-.o-blue-wrapper {
-  color: #fff;
-
-}
+   .o-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $wrapper-width-base;
+    width: 100%;
+  }
+  
+  .o-wrapper-wide {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $wrapper-width-wide;
+    width: 100%;
+  }
+  
+  .o-wrapper-narrow {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $wrapper-width-narrow;
+    width: 100%;
+  }
+  
+  .o-blue-wrapper, .o-blue-wrapper-after-banner {
+    color: #fff;
+  
+  }
+  
+  .o-white-doubleborder-inner, .o-double-bordered-inner {
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 1px;
+      background-color: $color-blue-med;
+      position: absolute;
+      left: -10px;
+      top: 0;
+    }
+    &::after {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 1px;
+      background-color: $color-blue-med;
+      position: absolute;
+      right: -10px;
+      top: 0;
+    }
+  }
+  
+  .gb-container .gb-container p:last-child {
+    margin-bottom: 0;
+  }

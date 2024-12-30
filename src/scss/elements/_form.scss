@@ -18,7 +18,12 @@ align-self: stretch;
 }
 
 form {
-
+--gf-field-pg-prog-bar-bg-color : #739DD2;
+--gf-field-pg-prog-bar-radius : 0;
+--gf-field-pg-prog-bar-bg-color-blue : #1C2674;
+--gf-field-pg-prog-bar-height: 15px;
+--gf-local-bg-color: #28317b;
+--gf-local-bg-color-hover: #fff;
 
 input {
 
@@ -44,21 +49,39 @@ text-overflow: ellipsis;
 }
 }
 
+.gf_progressbar_title {
+  color: $color-blue-light !important;
+}
+.gf_progressbar {
+  background-color: $color-blue-dark !important;
+  border-radius: 0 !important;
+  border: 1px solid $color-blue-med !important;
+}
 
+.gf_progressbar_percentage {
+  border-radius: 0 !important;
+  background-color: $color-blue-darkest !important;
+
+}
 
 
 form, .gform-body {
 
+  .gfield_description {
+    color: $color-blue-light !important;
+  }
+
   label {
     font-weight: 400 !important;
     margin-bottom: 2px !important;
+    font-size: 18px !important;
   }
-  input, select, textarea {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not(.gform_button), select, textarea {
   align-items: center;
   flex: 1 0 0;
   align-self: stretch;
   border-radius:  0 !important;
-  border: 1px solid  #C1C7D1 !important;
+  border: 1px solid  $color-blue-med !important;
   background: var(--Colors-Background-bg-primary, #FFF);
   /* Shadows/shadow-xs */
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
@@ -72,16 +95,49 @@ form, .gform-body {
   text-overflow: ellipsis;
   }
   }
+
+  // input type
+
+
+  .gform_page_footer {
+
+    input.gform_next_button, input.gform_previous_button {
+    border: 1px solid #026cb6 !important;
+    background-color: #28317b;
+    border-radius: 0;
+    color: #ffffff;
+    display: inline-flex;
+    font-family: Open Sans Condensed;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    padding: 15px 25px;
+    text-transform: uppercase;
+    cursor: pointer;
+    }
+    
+  }
+  
   }
 
-  .is-dark-page form, .is-dark-page .gform-body, .o-blue-wrapper form, .o-blue-wrapper .gform-body {
+
+  .gf_progressbar_wrapper {
+    margin-bottom: 60px;
+  }
+
+
+  .is-dark-page form, .is-dark-page .gform-body, .o-blue-wrapper form,.o-blue-wrapper-after-banner form, .o-blue-wrapper .gform-body:not([type="checkbox"]):not([type="radio"]), .o-blue-wrapper-after-banner .gform-body:not([type="checkbox"]):not([type="radio"]) {
     input, select, textarea {
       background-color: $color-blue-dark;
       border-color: $color-blue-med !important;
+     color: #fff !important;
     }
     .gfield_required .gfield_required_text {
-      color: $color-orange-dark;
+      color: #739DD2;
+      font-style: normal;
+      margin-left: 9px;
     }
+    --Colors-Background-bg-primary: #28317B;
   }
   
   .gform-theme--foundation .gform_fields {
@@ -91,7 +147,11 @@ form, .gform-body {
   
 
   .gform_wrapper.gravity-theme .gform_fields {
-    grid-column-gap: 60px !important;
+    grid-column-gap: 9% !important;
+    @media(width >= $bp-large) {
+      grid-column-gap: 60px !important;
+    
+    } 
   }
   
 
@@ -107,7 +167,7 @@ form, .gform-body {
       cursor: pointer;
       display: inline-flex;
     background-color: #fff !important;
-    padding: 16px 30px !important;
+    padding: 15px 25px !important;
     justify-content: center;
     align-items: center;
     color: #000 !important;
@@ -117,7 +177,7 @@ form, .gform-body {
     font-style: normal;
     line-height: 24px; /* 133.333% */
     letter-spacing: 0.18px;
-    border-radius: 5px;
+    border-radius: 0;
     border: 1px solid !important;
     text-transform: uppercase;
     font-weight: 400;
@@ -131,6 +191,133 @@ form, .gform-body {
       border-color: $color-blue-med !important;
       background-color: $color-blue-dark !important;
       color: #fff !important;
-      
+      text-transform: uppercase !important;
     }
+  }
+
+
+  .gform_wrapper.gravity-theme .gfield_required {
+    color: $color-blue-light !important;
+    font-style: none !important;
+
+  }
+
+  body .gravity-theme table.gsurvey-likert {
+    margin-top: 30px !important;
+  }
+
+  body .gravity-theme .gfield--type-survey {
+    margin-top: 30px;
+  }
+
+  #gform_fields_3_4  .gfield--type-survey {
+    margin-top: 0 !important;
+  }
+
+  #field_3_26  {
+    margin-top: 30px !important;
+  }
+
+  body .gravity-theme table.gsurvey-likert th.gsurvey-likert-choice-label {
+    background-color: $color-blue-darkest !important;
+    font-weight: 400 !important;
+    border-color: $color-blue-med;
+  }
+
+  body  .gravity-theme table.gsurvey-likert,  table.gsurvey-likert .gsurvey-likert-choice {
+    border-color: $color-blue-med !important;
+    padding-top: 29px !important;
+    padding-bottom: 29px !important;
+  }
+
+  .gravity-theme table.gsurvey-likert td.gsurvey-likert-choice.gsurvey-likert-selected {
+    background-color: $color-blue-dark !important;
+    color: #fff !important;
+  }
+
+  #gform_3 .gfield_label.gform-field-label{
+    font-weight: 400 !important;
+    margin-bottom: 2px !important;
+    font-size: 18px !important;
+    // font-weight: 400;
+    // font-size: clamp(1.19rem,0.5vw + 1.06rem,1.5rem) !important;
+  // line-height: 1.74;
+  }
+
+  
+
+  .gfield--input-type-likert {
+    margin-bottom: 30px !important;
+  }
+
+  body .gform_wrapper.gravity-theme .gform_validation_errors,body .gform_wrapper.gravity-theme .gfield_validation_message, body .gform_wrapper.gravity-theme .validation_message {
+background-color: $color-red ;
+color: #fff !important;
+padding-top: 7px;
+padding-bottom: 7px;
+border-radius: 0;
+h2 {
+  color: #fff !important;
+}
+  }
+
+  body .gform_wrapper.gravity-theme .gfield_error label, body .gform_wrapper.gravity-theme .gfield_error legend {
+    color: #fff !important;
+  }
+
+  .gform_page_footer .button.gform_button {
+    cursor: pointer;
+    display: inline-flex !important;
+    padding: 15px 25px !important; 
+    border-radius: 0 !important;
+    font-family: $font-secondary !important;
+    font-weight: 600;
+
+    text-transform: uppercase !important; 
+  }
+
+  #gform_wrapper_3 {
+    .gform_required_legend{
+      display: none;
+    }
+
+    .gfield_required {
+      // margin-top: 10px;
+      // display: block !important;
+      font-style: normal !important;
+      // font-size: 16px !important;
+    }
+
+    .gchoice  {
+      margin-bottom: 10px;
+      label {
+        font-size: 16px !important;
+        padding-left: 15px;
+        line-height: 1.2;
+      }
+    }
+  }
+
+
+  .gform_page_footer  {
+    padding-top: 54px !important;
+  }
+
+  .gform_wrapper .gfield--input-type-radio  .gfield_radio, .gform_wrapper .gfield--type-checkbox .gfield_checkbox{
+margin-top: 30px !important;
+  }
+
+  #input_3_24 {
+    margin-bottom: 35px;
+  }
+
+  @media(width <= $bp-large) {
+    .gravity-theme .gform_fields table.gsurvey-likert td::after {
+      position: absolute;
+      top: 15px;
+    }
+  } 
+
+  .gform_wrapper.gravity-theme .gform_validation_errors > ol a {
+    color: #fff !important;
   }

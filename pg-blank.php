@@ -7,7 +7,7 @@ Template Name: Blank (Full Wide) Page
 <?php get_header(); ?>
 
 <div class="o-layout-row">
-  <main class="" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/WebPageElement">
+  <main id="main-content" class="" role="main" itemscope itemprop="mainContentOfPage" itemtype="https://schema.org/WebPageElement">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
       <?php the_content(); ?>
     <?php endwhile; endif; // END main loop (if/while) ?>

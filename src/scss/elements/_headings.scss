@@ -2,93 +2,98 @@
    HEADINGS
    ========================================================================== */
 
-h1, .h1-style, h2, .h2-style, h3, .h3-style, h4, .h4-style, h5, .h5-style, h6, .h6-style {
-  color: $color-blue-med;
-  font-family: $font-primary;
-  font-weight: 400;
-  line-height: $line-height-tight;
-  margin: 0 0 22px 0;
-  &.is-style-u-eyebrow-heading {
-    font-family: $font-secondary;
-    letter-spacing: 1px;
-    font-weight: 600;
-    font-size: clamped(20px, 22px) !important;
+   h1, .h1-style, h2, .h2-style, h3, .h3-style, h4, .h4-style, h5, .h5-style, h6, .h6-style {
     color: $color-blue-med;
-    margin-bottom: 30px;
-    line-height: 1;
-
-    &.mb-0 {
-      margin-bottom: 0;
+    font-family: $font-primary;
+    font-weight: 400;
+    line-height: $line-height-tight;
+    margin: 0 0 22px 0;
+    &.is-style-u-eyebrow-heading {
+      font-family: $font-secondary;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-size: clamped(20px, 22px) !important;
+      color: $color-blue-med;
+      margin-bottom: 30px;
+      line-height: 1;
+  
+      &.mb-0 {
+        margin-bottom: 0;
+      }
+      br {
+        margin-bottom: 7px;
+      }
+      + h2, + h3 {
+        margin-top: -15px;
+      }
     }
-    br {
-      margin-bottom: 7px;
-    }
-    + h2, + h3 {
-      margin-top: -15px;
+    &.is-style-u-eyebrow-heading-white {
+      font-family: $font-secondary;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-size: clamped(20px, 22px) !important;
+      color: #fff;
+      margin-bottom: 30px;
+      
     }
   }
-  &.is-style-u-eyebrow-heading-white {
+  
+  h3.is-style-u-eyebrow-heading, .h3-style.is-style-u-eyebrow-heading {
+    line-height: 114%;
+  }
+  
+  .is-dark-page:not(.search), .o-blue-wrapper, footer, .o-blue-wrapper-after-banner {
+    h1, .h1-style, h2, .h2-style, h3, .h3-style, h4, .h4-style, h5, .h5-style, h6, .h6-style {
+      &.is-style-u-eyebrow-heading {
+        color: $color-blue-light;
+      }
+    }
+  }
+  h1 a, .h1-style a, h2 a, .h2-style a, h3 a, .h3-style a, h4 a, .h4-style a, h5 a, .h5-style a, h6 a, .h6-style a {
+    text-decoration: none;
+  }
+  
+  h1, .h1-style {
+    font-size: clamped(40px, 60px);
+    font-weight: 700;
+    color: $color-blue-darkest;
+  }
+  
+  
+  h2, .h2-style {
+    font-size: clamped(34px, 48px);
+    font-weight: 600;
+    margin-bottom: 58px;
+    word-spacing: .1em;
+    &.is-style-u-eyebrow-heading {
+      text-transform: uppercase;
+    }
+  }
+  h3, .h3-style {
+    font-size: clamped(34px, 48px);
+    font-weight: 600;
+    margin-bottom: 58px;
+  
+  }
+  h4, .h4-style {
+    font-size: clamped(18px, 22px);
     font-family: $font-secondary;
+    word-spacing: .1em;
     letter-spacing: 1px;
     font-weight: 600;
-    font-size: clamped(20px, 22px) !important;
-    color: #fff;
-    margin-bottom: 30px;
-    
+  
+  
   }
-}
-
-.is-dark-page:not(.search), .o-blue-wrapper, footer {
-  h1, .h1-style, h2, .h2-style, h3, .h3-style, h4, .h4-style, h5, .h5-style, h6, .h6-style {
-    &.is-style-u-eyebrow-heading {
-      color: $color-blue-light;
-    }
-  }
-}
-h1 a, .h1-style a, h2 a, .h2-style a, h3 a, .h3-style a, h4 a, .h4-style a, h5 a, .h5-style a, h6 a, .h6-style a {
-  text-decoration: none;
-}
-
-h1, .h1-style {
-  font-size: clamped(45px, 60px);
-  font-weight: 700;
-  color: $color-blue-darkest;
-}
-
-
-h2, .h2-style {
-  font-size: clamped(34px, 48px);
-  font-weight: 600;
-  margin-bottom: 58px;
-  word-spacing: .1em;
-  &.is-style-u-eyebrow-heading {
+  h5, .h5-style {
+    font-size: clamped(18px, 18px);
+  
+    font-weight: 600;
     text-transform: uppercase;
+  
+  
   }
-}
-h3, .h3-style {
-  font-size: clamped(34px, 48px);
-  font-weight: 600;
-  margin-bottom: 58px;
-
-}
-h4, .h4-style {
-  font-size: clamped(18px, 22px);
-  font-family: $font-secondary;
-  word-spacing: .1em;
-  letter-spacing: 1px;
-  font-weight: 600;
-
-
-}
-h5, .h5-style {
-  font-size: clamped(18px, 18px);
-
-  font-weight: 600;
-  text-transform: uppercase;
-
-
-}
-h6, .h6-style {
-  font-size: clamped(16px, 18px);
-
-}
+  h6, .h6-style {
+    font-size: clamped(16px, 18px);
+  
+  }
+  

@@ -3222,6 +3222,16 @@
    HTML AND BODY ELEMENT STYLES
     - root font sizes set here so REMs scale with screen size increases
    ========================================================================== */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+  outline: 2px solid #F26531 !important;
+  outline-offset: -2px;
+}
+
 html {
   font-size: 16px;
   overflow-x: hidden;
@@ -3236,15 +3246,16 @@ body {
   position: relative;
 }
 
-a:focus,
-button:focus,
-input:focus,
-textarea:focus,
-select:focus {
-  outline: 1px solid #F26531 !important;
-  outline-offset: 0px;
+@media (forced-colors: active) {
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus,
+  [tabindex]:focus {
+    outline: 2px solid SelectedItem !important;
+  }
 }
-
 .is-dark-page:not(.search) {
   background-color: #1C2674;
 }
@@ -3386,13 +3397,13 @@ h6, .h6-style {
    ========================================================================== */
 hr, hr.wp-block-separator {
   display: block;
-  margin: 10px auto;
+  margin: 1rem auto;
   padding: 0;
   clear: both;
   width: 100%;
   border-top: 0;
-  margin: 60px auto 20px auto;
-  height: 1px;
+  border-color: #333;
+  margin: 50px auto;
 }
 
 /* ==========================================================================
@@ -3757,6 +3768,10 @@ body .gform_wrapper.gravity-theme .gfield_error label, body .gform_wrapper.gravi
     top: 15px;
   }
 }
+.gform_wrapper.gravity-theme .gform_validation_errors > ol a {
+  color: #fff !important;
+}
+
 /* ==========================================================================
    A TAG (links) STYLES
    ========================================================================== */
@@ -3795,7 +3810,7 @@ p {
   line-height: 1.6;
   margin: 0 0 30px 0;
   padding: 0;
-  font-size: clamp(1rem, 0.2vw + 0.95rem, 1.13rem);
+  font-size: 18px;
 }
 p.is-style-u-eyebrow-heading {
   font-family: "Open Sans Condensed", sans-serif;
