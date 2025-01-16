@@ -9,6 +9,27 @@
 //   function acf_icon_path_suffix( $path_suffix ) {
 //       return 'img/icons/';
 //   }
+
+// dynamic GB alt tags
+add_filter( 'render_block', function( $content, $block ) {
+    if (
+        'generateblocks/image' !== $block['blockName'] ||
+        ! isset( $block['attrs']['mediaId'] )
+    ) {
+        return $content;
+    }
+
+    $image_alt = get_post_meta($block['attrs']['mediaId'], '_wp_attachment_image_alt', TRUE);
+
+    return preg_replace(
+        '/(alt=")([^"]*)(")/',
+        "$1{$image_alt}$3",
+        $content
+    );
+
+}, 10, 2 );
+
+
   
 //used for Stackable blocks support - match to wrapper width 
 global $content_width;
@@ -128,24 +149,7 @@ class Custom_Menu_Walker extends Walker_Nav_Menu {
 }
 
 
-// dynamic GB alt tags
-add_filter( 'render_block', function( $content, $block ) {
-    if (
-        'generateblocks/image' !== $block['blockName'] ||
-        ! isset( $block['attrs']['mediaId'] )
-    ) {
-        return $content;
-    }
 
-    $image_alt = get_post_meta($block['attrs']['mediaId'], '_wp_attachment_image_alt', TRUE);
-
-    return preg_replace(
-        '/(alt=")([^"]*)(")/',
-        "$1{$image_alt}$3",
-        $content
-    );
-
-}, 10, 2 );
  
 
 /**
@@ -173,6 +177,43 @@ add_filter('gform_field_content', function($content, $field) {
 }, 10, 2);
 
  
+
+/**
+ * Modify Yoast SEO search page title
+ *
+ * @param string $title The current title
+ * @return string Modified title
+ */
+function modify_yoast_search_title( $title ) {
+    if ( is_search() ) {
+        $search_term = get_search_query();
+        if ( ! empty( $search_term ) ) {
+            return sprintf( 
+                'Résultats de recherche pour: "%s"', 
+                esc_html( $search_term )
+            );
+        }
+    }
+    return $title;
+}
+add_filter( 'wpseo_title', 'modify_yoast_search_title' );
+
+
+//* Remove Yoast SEO breadcrumbs from Revelanssi's search results
+
+add_filter( 'the_content', 'wpdocs_remove_shortcode_from_index' );
+
+function wpdocs_remove_shortcode_from_index( $content ) {
+
+    if ( is_search() ) {
+
+        $content = strip_shortcodes( $content );
+
+    }
+
+    return $content;
+
+}
 
 
 ?>

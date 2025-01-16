@@ -27,11 +27,11 @@
             <h2 class="is-style-u-eyebrow-heading u-ttu" role="heading" aria-level="2">Erreur 404</h2>
               <p class="has-large-font-size">Nous sommes désolés, mais la page ou le document que vous recherchez est introuvable. Il se peut qu'il ait été supprimé, déplacé vers un nouvel emplacement, que son nom ait été changé ou qu'il soit temporairement indisponible.<p>
                         
-                         <h2 class="u-ttu is-style-u-eyebrow-heading u-blue-dark mt-14">What can you do?</h2>
+                         <h2 class="u-ttu is-style-u-eyebrow-heading u-blue-dark mt-14">Que Pouvez-Vous Faire ?</h2>
                          <ul>
-                          <li>Aller à la page<a href="<?php echo home_url(); ?>">d'accueil</a>.</li>
+                          <li>Aller à la page <a href="<?php echo home_url(); ?>">d'accueil</a>.</li>
                           <li>Utilisez la fonction de recherche pour trouver les informations que vous cherchez.</li>
-                          <li>Si vous croyez qu'il y a une erreur ou si vous avez besoin d'aide, veuillez nous <a href="/contact">contactor</a>.</li>
+                          <li>Si vous croyez qu'il y a une erreur ou si vous avez besoin d'aide, veuillez nous <a href="/contact">contacter</a>.</li>
                          </ul>
             </div>
         

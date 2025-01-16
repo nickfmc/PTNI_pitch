@@ -77,6 +77,33 @@ function applyRoleToFigures() {
     });
 }
 
+
+// fix empty figure usage
+function applyRoleToFigures() {
+    // Get all figure elements
+    const figures = document.querySelectorAll('figure');
+
+    figures.forEach(figure => {
+        // Get all child nodes (including text nodes)
+        const children = Array.from(figure.childNodes);
+        
+        // Filter out whitespace text nodes
+        const nonWhitespaceChildren = children.filter(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                return node.textContent.trim().length > 0;
+            }
+            return true;
+        });
+
+        // Check if there's exactly one child and it's an img
+        if (nonWhitespaceChildren.length === 1 && 
+            nonWhitespaceChildren[0].nodeName.toLowerCase() === 'img') {
+            figure.setAttribute('role', 'none');
+        }
+    });
+}
+
+
 // Run the function when the DOM is fully loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', applyRoleToFigures);

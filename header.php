@@ -98,6 +98,7 @@
                 <form role="search" method="get" id="search-form" class="c-search-form" action="<?php echo home_url( '/' ); ?>">
   <fieldset>
     <legend class="u-visually-hidden">Rechercher</legend> 
+ <div>
       <label for="s" class="u-visually-hidden">Rechercher :</label> 
       <input type="search" id="s" name="s" value="" class="search-input" placeholder="Rechercher..." aria-label="Rechercher" />
       <button type="submit" id="search-submit" class="search-submit" aria-label="Soumettre la recherche"><svg version="1.1" id="main" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40.844px" height="40.84px" viewBox="0 0 40.844 40.84" enable-background="new 0 0 40.844 40.84" xml:space="preserve">

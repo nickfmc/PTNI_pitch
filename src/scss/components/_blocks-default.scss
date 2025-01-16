@@ -376,3 +376,7 @@ body .u-break-early {
     margin-top: 10px;
   }
 
+
+  .search-results .has-large-font-size {
+    font-size: clamp(1rem,0.2vw + 0.95rem,1.13rem) !important; 
+  }

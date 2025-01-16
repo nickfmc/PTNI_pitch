@@ -4696,6 +4696,10 @@ main p + .is-style-u-eyebrow-heading {
   margin-top: 10px;
 }
 
+.search-results .has-large-font-size {
+  font-size: clamp(1rem, 0.2vw + 0.95rem, 1.13rem) !important;
+}
+
 /* ==========================================================================
    LINK BUTTON STYLES
    ========================================================================== */
@@ -5589,7 +5593,7 @@ main p + .is-style-u-eyebrow-heading {
   top: 5px;
 }
 
-@media (width >= 992px) {
+@media (width >= 1206px) {
   .c-main-navigation {
     /* DISPLAY FULL SIZE MENU */
     display: -webkit-box;
@@ -5601,7 +5605,7 @@ main p + .is-style-u-eyebrow-heading {
     top: 0;
   }
 }
-@media (width >= 992px) {
+@media (width >= 1206px) {
   .c-main-menu {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
@@ -5635,12 +5639,12 @@ main p + .is-style-u-eyebrow-heading {
     cursor: unset;
   }
 }
-@media (width >= 992px) and (width >= 1060px) {
+@media (width >= 1206px) and (width >= 1060px) {
   .c-main-menu > li > a, .c-main-menu > li > button {
     padding: 20px 15px;
   }
 }
-@media (width >= 992px) {
+@media (width >= 1206px) {
   .c-main-menu > li > a:first-of-type > a, .c-main-menu > li > button:first-of-type > a {
     padding-left: 0;
   }
@@ -5687,7 +5691,7 @@ main p + .is-style-u-eyebrow-heading {
     color: #222222;
   }
 }
-@media (width >= 992px) {
+@media (width >= 1206px) {
   .c-main-menu li:hover ul,
   .c-main-menu li:focus ul {
     opacity: 1;
@@ -5921,7 +5925,7 @@ main p + .is-style-u-eyebrow-heading {
 /* ==========================================================================
    VARIABLES
    ========================================================================== */
-@media (width >= 1024px) {
+@media (width >= 1206px) {
   .c-modal-nav {
     display: none;
   }

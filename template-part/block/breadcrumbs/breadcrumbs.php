@@ -39,12 +39,14 @@ if( $is_preview ) {
 
 
 <?php
-    // Display Yoast SEO breadcrumbs
-    if ( function_exists('yoast_breadcrumb') ) {
-        yoast_breadcrumb( '<nav aria-label="fil d\'Ariane" id="breadcrumbs">','</nav>' );
+    // Display Yoast SEO breadcrumbs only when not in search results
+    if ( !is_search() ) {
+        if ( function_exists('yoast_breadcrumb') ) {
+            yoast_breadcrumb( '<nav aria-label="fil d\'Ariane" id="breadcrumbs">','</nav>' );
+        }
     }
-    
 ?>
+
 
 
 </div>
