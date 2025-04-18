@@ -1,4 +1,4 @@
-  <footer class="o-section c-page-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+  <footer class="o-section c-page-footer" id="c-page-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
     <div class="c-page-footer-topper">
       <div class="o-wrapper-wide">
         <p class="is-style-u-eyebrow-heading u-ttu">

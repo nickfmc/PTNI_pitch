@@ -51,6 +51,134 @@ function updateProgressBarText() {
 
 // END Translate form steps Gforms
 
+document.addEventListener('DOMContentLoaded', function() {
+    const dropArea = document.getElementById('gform_drag_drop_area_4_10');
+    const uploadField = document.getElementById('gform_multifile_upload_4_10');
+    const defaultMessagesList = document.getElementById('gform_multifile_messages_4_10');
+
+    if (!dropArea || !uploadField) {
+        console.log('Upload elements not found');
+        return;
+    }
+
+    dropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropArea.classList.add('gform-dropzone--dragover');
+    });
+
+    dropArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        dropArea.classList.remove('gform-dropzone--dragover');
+    });
+
+    dropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropArea.classList.remove('gform-dropzone--dragover');
+        
+        const files = e.dataTransfer.files;
+        const maxFileSize = 10 * 1024 * 1024; // 10MB limit (adjust as needed)
+        
+        for (let file of files) {
+            const extension = file.name.split('.').pop().toLowerCase();
+            const allowedTypes = ['pdf', 'jpeg', 'jpg', 'png', 'gif'];
+            
+            // Check file size
+            if (file.size > maxFileSize) {
+                if (defaultMessagesList) {
+                    defaultMessagesList.style.display = 'none';
+                }
+                const errorMessage = `${file.name} - Le fichier dépasse la limite de taille`;
+                displayError(errorMessage, dropArea);
+                return;
+            }
+
+            // Check file type
+            if (!allowedTypes.includes(extension)) {
+                if (defaultMessagesList) {
+                    defaultMessagesList.style.display = 'none';
+                }
+                const errorMessage = `${file.name} - Ce type de fichier n'est pas autorisé. Doit être l'un des suivants : ${allowedTypes.join(', ')}`;
+                displayError(errorMessage, dropArea);
+                return;
+            }
+        }
+
+        // If files are valid, trigger the default upload handling
+        const dt = new DataTransfer();
+        for (let file of files) {
+            dt.items.add(file);
+        }
+        uploadField.files = dt.files;
+        
+        const event = new Event('change', { bubbles: true });
+        uploadField.dispatchEvent(event);
+    });
+
+    // Observer to watch for and translate default messages
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList' && defaultMessagesList) {
+                const messages = defaultMessagesList.getElementsByClassName('gfield_validation_message');
+                Array.from(messages).forEach(message => {
+                    const text = message.textContent;
+                    if (text.includes('File exceeds size limit')) {
+                        defaultMessagesList.style.display = 'none';
+                        const fileName = text.split(' - ')[0];
+                        displayError(`${fileName} - Le fichier dépasse la limite de taille`, dropArea);
+                    } else if (text.includes('This type of file is not allowed')) {
+                        defaultMessagesList.style.display = 'none';
+                        const fileName = text.split(' - ')[0];
+                        displayError(`${fileName} - Ce type de fichier n'est pas autorisé. Doit être l'un des suivants : pdf, jpeg, jpg, png, gif`, dropArea);
+                    }
+                });
+            }
+        });
+    });
+
+    // Start observing the messages list for changes
+    if (defaultMessagesList) {
+        observer.observe(defaultMessagesList, { childList: true, subtree: true });
+    }
+
+    // Also handle direct file input changes
+    uploadField.addEventListener('change', function(e) {
+        const files = e.target.files;
+        const maxFileSize = 10 * 1024 * 1024; // 10MB limit (adjust as needed)
+
+        for (let file of files) {
+            if (file.size > maxFileSize) {
+                if (defaultMessagesList) {
+                    defaultMessagesList.style.display = 'none';
+                }
+                const errorMessage = `${file.name} - Le fichier dépasse la limite de taille`;
+                displayError(errorMessage, dropArea);
+                return;
+            }
+        }
+    });
+});
+
+function displayError(message, dropArea) {
+    const existingError = document.querySelector('.gform-upload-error');
+    if (existingError) {
+        existingError.remove();
+    }
+
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'gform-upload-error';
+    errorDiv.textContent = message;
+    errorDiv.style.cssText = 'background: #c02b0a; color: #fff; margin-top: 8px; font-size: 0.875em; padding: 5px 10px;';
+
+    dropArea.parentNode.insertBefore(errorDiv, dropArea.nextSibling);
+
+    setTimeout(() => {
+        errorDiv.remove();
+    }, 20000);
+}
+
+
+
 
 // fix empty figure usage
 function applyRoleToFigures() {

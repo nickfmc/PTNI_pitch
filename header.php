@@ -18,6 +18,8 @@
   <?php // END Analytics ?>
 </head>
 
+<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2551X1JBQ"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-J2551X1JBQ'); </script>
+
 <body <?php 
     $classes = pretty_body_class();
     if (get_field('is_dark_page')) {
@@ -95,7 +97,10 @@
               </div>
                 <?php  gdt_nav_menu( 'mobile-menu', 'c-mobile-menu' ); // Adjust using Menus in WordPress Admin ?>
 
-                <form role="search" method="get" id="search-form" class="c-search-form" action="<?php echo home_url( '/' ); ?>">
+                
+                
+
+ <!-- <form role="search" method="get" id="search-form" class="c-search-form" action="<?php echo home_url( '/' ); ?>">
   <fieldset>
     <legend class="u-visually-hidden">Rechercher</legend> 
  <div>
@@ -109,7 +114,47 @@
 </svg></button>
     </div>
   </fieldset>
+</form> -->
+
+<form role="search" method="get" id="search-form" class="c-search-form" action="<?php echo home_url( '/' ); ?>">
+    <div class="search-wrapper">
+        <!-- Single, properly associated label -->
+        <label for="search-input" class="u-visually-hidden">Rechercher</label>
+        
+        <input type="search" 
+               id="search-input" 
+               name="s" 
+               class="search-input" 
+               placeholder="Search..." />
+
+        <button type="submit" 
+                class="search-submit" 
+                aria-label="Submit search">
+            <svg version="1.1" 
+                 xmlns="http://www.w3.org/2000/svg" 
+                 xmlns:xlink="http://www.w3.org/1999/xlink" 
+                 x="0px" 
+                 y="0px" 
+                 width="40.844px" 
+                 height="40.84px" 
+                 viewBox="0 0 40.844 40.84" 
+                 enable-background="new 0 0 40.844 40.84" 
+                 xml:space="preserve"
+                 aria-hidden="true">
+                <title>Icône de recherche</title>
+                <path fill="#FFFFFF" d="M40.844,37.94L40.844,37.94l-8.84-8.837c2.438-3.065,3.896-6.942,3.896-11.154C35.9,8.052,27.85,0,17.951,0
+                    S0,8.052,0,17.949c0,9.898,8.053,17.95,17.951,17.95c4.213,0,8.088-1.459,11.154-3.896l8.838,8.836v0.001h2.9V37.94L40.844,37.94z
+                    M4,17.949C4,10.258,10.26,4,17.951,4S31.9,10.258,31.9,17.949c0,3.563-1.344,6.817-3.551,9.285l-1.111,1.113
+                    c-2.469,2.207-5.723,3.552-9.287,3.552C10.26,31.899,4,25.642,4,17.949z"></path>
+            </svg>
+        </button>
+    </div>
 </form>
+
+
+
+
+
               </nav>
             </div> <!-- /modal-nav-wrap -->
         </div>

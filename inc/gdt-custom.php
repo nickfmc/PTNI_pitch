@@ -165,6 +165,27 @@ add_filter('gform_field_validation', function($result, $value, $form, $field) {
     if (!$result['is_valid'] && $result['message'] == 'This field is required.') {
         $result['message'] = 'Ce champ est requis.';
     }
+    // Translation for invalid email message
+    if ($result['message'] == 'The email address entered is invalid, please check the formatting (e.g. email@domain.com).') {
+        $result['message'] = "L'adresse courriel entrée est invalide, veuillez vérifier le format (par ex. courriel@domaine.com).";
+    }
+    if ($result['message'] == 'Please enter a valid Website URL (e.g. https://gravityforms.com).') {
+        $result['message'] = "Veuillez entrer une URL de site Web valide (ex: https://ptni.ca).";
+    }
+      if ($result['message'] == 'Sorry, this file extension is not permitted for security reasons.' || 
+        strpos($result['message'], 'Sorry, this file extension is not permitted for security reasons.') !== false) {
+        
+        // Extract filename if it exists in the message
+        $filename = '';
+        if (strpos($result['message'], ' - Sorry, this file extension') !== false) {
+            $parts = explode(' - ', $result['message']);
+            $filename = $parts[0] . ' - ';
+        }
+        
+        $result['message'] = $filename . "Désolé, cette extension de fichier n'est pas autorisée pour des raisons de sécurité.";
+    }
+    
+    
     return $result;
 }, 10, 4);
 
@@ -173,8 +194,22 @@ add_filter('gform_field_content', function($content, $field) {
     if ($field->isRequired) {
         $content = str_replace('(Required)', '(Requis)', $content);
     }
+
+    $content = str_replace('Drop files here or ', 'Déposez les fichiers ici ou ', $content);
+    $content = str_replace('Select files', 'Sélectionner les fichiers', $content);
+    $content = str_replace('Max. file size: ', 'Taille maximale du fichier : ', $content);
+    $content = str_replace('Accepted file types: ', 'Types de fichiers acceptés : ', $content);
+    $content = str_replace('Max. files', 'Maximum. fichiers', $content);
+
+
     return $content;
 }, 10, 2);
+
+
+
+
+
+
 
  
 
