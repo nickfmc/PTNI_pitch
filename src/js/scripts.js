@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const muteButton = videoPlayer.querySelector('.mute');
         const ccButton = videoPlayer.querySelector('.cc');
         const transcriptToggleButton = videoPlayer.querySelector('.transcript-toggle');
-        const progressBar = videoPlayer.querySelector('.progress-bar');
+        const progressBar = videoPlayer.querySelector('.progress-bar'); 
         const progressContainer = videoPlayer.querySelector('.progress-container');
         const transcript = videoPlayer.closest('.alignfull').querySelector('.transcript'); // Find the transcript outside the video player
         const playIcon = videoPlayer.querySelector('.c-play-icon');
@@ -378,11 +378,11 @@ document.addEventListener('DOMContentLoaded', function() {
         function togglePlayPause() {
             if (video.paused) {
                 video.play();
-                playPauseButton.textContent = 'Pause';
+                playPauseButton.textContent = 'Pause'; // French: 'Pause'
                 playIcon.classList.add('is-hidden'); // Hide play icon
             } else {
                 video.pause();
-                playPauseButton.textContent = 'Play';
+                playPauseButton.textContent = 'Lecture'; // French: 'Lecture'
                 playIcon.classList.remove('is-hidden'); // Show play icon
             }
         }
@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (muteButton) {
             muteButton.addEventListener('click', function() {
                 video.muted = !video.muted;
-                muteButton.textContent = video.muted ? 'Unmute' : 'Mute';
+                muteButton.textContent = video.muted ? 'Activer le son' : 'Muet'; // French: 'Activer le son' (Unmute), 'Muet' (Mute)
             });
         }
 
